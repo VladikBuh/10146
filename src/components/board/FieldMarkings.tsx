@@ -1,60 +1,94 @@
 import { StyleSheet, View } from 'react-native';
 
+import { projectBoardRect, type BoardRect } from '../../data/tacticalBoard';
+
 import { colors } from '../../theme';
 
 type FieldMarkingsProps = {
-  scaleX: number;
-  scaleY: number;
+  scale: number;
+  /** True when the pitch is rendered a quarter turn clockwise (landscape). */
+  transposed: boolean;
 };
 
-export function FieldMarkings({ scaleX, scaleY }: FieldMarkingsProps) {
-  const x = (value: number) => value * scaleX;
+/** Design-space geometry of the artwork; projection handles the orientation. */
+const HALFWAY_LINE: BoardRect = { x: 21.5, y: 325.5, width: 315, height: 0 };
+const CENTER_CIRCLE: BoardRect = { x: 151, y: 298, width: 56, height: 56 };
+const PENALTY_BOX_NEAR_TOP: BoardRect = {
+  x: 100.23,
+  y: 14.94,
+  width: 157.53,
+  height: 44.81,
+};
+const PENALTY_BOX_NEAR_BOTTOM: BoardRect = {
+  ...PENALTY_BOX_NEAR_TOP,
+  y: 591.34,
+};
 
-  const y = (value: number) => value * scaleY;
+export function FieldMarkings({ scale, transposed }: FieldMarkingsProps) {
+  const project = (rect: BoardRect) => projectBoardRect(rect, scale, transposed);
 
-  const circleSize = 56 * scaleX;
+  const line = project(HALFWAY_LINE);
+  const circle = project(CENTER_CIRCLE);
+  const firstBox = project(PENALTY_BOX_NEAR_TOP);
+  const secondBox = project(PENALTY_BOX_NEAR_BOTTOM);
+
+  /**
+   * The boxes are rounded on the edge facing midfield. Transposing moves that
+   * edge from vertical to horizontal, so the rounded corners follow.
+   */
+  const firstBoxRadii = transposed
+    ? styles.FieldMarkingsPenaltyBoxRight
+    : styles.FieldMarkingsPenaltyBoxBottom;
+  const secondBoxRadii = transposed
+    ? styles.FieldMarkingsPenaltyBoxLeft
+    : styles.FieldMarkingsPenaltyBoxTop;
 
   return (
     <>
       <View
         style={[
           styles.FieldMarkingsHalfwayLine,
-          { left: x(21.5), top: y(325.5), width: x(315) },
+          {
+            left: line.x,
+            top: line.y,
+            width: line.width || StyleSheet.hairlineWidth,
+            height: line.height || StyleSheet.hairlineWidth,
+          },
         ]}
       />
       <View
         style={[
           styles.FieldMarkingsCenterCircle,
           {
-            left: x(179) - circleSize / 2,
-            top: y(326) - circleSize / 2,
-            width: circleSize,
-            height: circleSize,
-            borderRadius: circleSize / 2,
+            left: circle.x,
+            top: circle.y,
+            width: circle.width,
+            height: circle.height,
+            borderRadius: circle.width / 2,
           },
         ]}
       />
       <View
         style={[
           styles.FieldMarkingsPenaltyBox,
-          styles.FieldMarkingsPenaltyBoxTop,
+          firstBoxRadii,
           {
-            left: x(100.23),
-            top: y(14.94),
-            width: x(157.53),
-            height: y(44.81),
+            left: firstBox.x,
+            top: firstBox.y,
+            width: firstBox.width,
+            height: firstBox.height,
           },
         ]}
       />
       <View
         style={[
           styles.FieldMarkingsPenaltyBox,
-          styles.FieldMarkingsPenaltyBoxBottom,
+          secondBoxRadii,
           {
-            left: x(100.23),
-            top: y(591.34),
-            width: x(157.53),
-            height: y(44.81),
+            left: secondBox.x,
+            top: secondBox.y,
+            width: secondBox.width,
+            height: secondBox.height,
           },
         ]}
       />
@@ -65,7 +99,6 @@ export function FieldMarkings({ scaleX, scaleY }: FieldMarkingsProps) {
 const styles = StyleSheet.create({
   FieldMarkingsHalfwayLine: {
     position: 'absolute',
-    height: StyleSheet.hairlineWidth,
     backgroundColor: colors.divider,
     opacity: 0.35,
   },
@@ -83,12 +116,22 @@ const styles = StyleSheet.create({
   },
 
   FieldMarkingsPenaltyBoxTop: {
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4,
+  },
+
+  FieldMarkingsPenaltyBoxBottom: {
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
   },
 
-  FieldMarkingsPenaltyBoxBottom: {
+  FieldMarkingsPenaltyBoxLeft: {
     borderTopLeftRadius: 4,
+    borderBottomLeftRadius: 4,
+  },
+
+  FieldMarkingsPenaltyBoxRight: {
     borderTopRightRadius: 4,
+    borderBottomRightRadius: 4,
   },
 });

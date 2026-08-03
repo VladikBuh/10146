@@ -17,6 +17,7 @@ import {
   BOARD_DESIGN_WIDTH,
   CHIP_SIZE,
   boardChips,
+  projectBoardRect,
 } from '../data/tacticalBoard';
 
 import { colors } from '../theme';
@@ -34,12 +35,27 @@ export function BoardScreen() {
 
   const resetBoard = useCallback(() => setResetToken(token => token + 1), []);
 
-  const scaleX = available.width / BOARD_DESIGN_WIDTH;
-  const scaleY = available.height / BOARD_DESIGN_HEIGHT;
-  const fieldWidth = available.width;
+  /**
+   * The pitch keeps its authored aspect ratio and is centred in the available
+   * space, so one uniform scale drives markings, chip positions and chip size.
+   * Scaling each axis on its own stretched the board in landscape: chips grew
+   * with the wide axis while their Y coordinates were squashed, leaving them
+   * overlapped and clipped. In landscape the pitch is also transposed so it
+   * fills the wide axis rather than shrinking into a narrow strip.
+   */
+  const transposed = available.width > available.height;
 
-  const fieldHeight = available.height;
-  const chipSize = CHIP_SIZE * scaleX;
+  const designWidth = transposed ? BOARD_DESIGN_HEIGHT : BOARD_DESIGN_WIDTH;
+  const designHeight = transposed ? BOARD_DESIGN_WIDTH : BOARD_DESIGN_HEIGHT;
+
+  const scale = Math.min(
+    available.width / designWidth,
+    available.height / designHeight,
+  );
+
+  const fieldWidth = designWidth * scale;
+  const fieldHeight = designHeight * scale;
+  const chipSize = CHIP_SIZE * scale;
 
   return (
     <View style={[styles.BoardScreenFacetChassis, { paddingTop: insets.top }]}>
@@ -81,25 +97,33 @@ export function BoardScreen() {
       </View>
 
       <View style={styles.BoardScreenFieldFrame} onLayout={handleFieldLayout}>
-        {scaleX > 0 && (
+        {scale > 0 && (
           <View
             style={[
               styles.BoardScreenFieldEnclave,
               { width: fieldWidth, height: fieldHeight },
             ]}
           >
-            <FieldMarkings scaleX={scaleX} scaleY={scaleY} />
-            {boardChips.map(chip => (
-              <BoardChip
-                key={`${chip.id}-${resetToken}-${fieldWidth}`}
-                team={chip.team}
-                startX={chip.x * scaleX}
-                startY={chip.y * scaleY}
-                size={chipSize}
-                fieldWidth={fieldWidth}
-                fieldHeight={fieldHeight}
-              />
-            ))}
+            <FieldMarkings scale={scale} transposed={transposed} />
+            {boardChips.map(chip => {
+              const spot = projectBoardRect(
+                { x: chip.x, y: chip.y, width: CHIP_SIZE, height: CHIP_SIZE },
+                scale,
+                transposed,
+              );
+
+              return (
+                <BoardChip
+                  key={`${chip.id}-${resetToken}-${fieldWidth}-${fieldHeight}`}
+                  team={chip.team}
+                  startX={spot.x}
+                  startY={spot.y}
+                  size={chipSize}
+                  fieldWidth={fieldWidth}
+                  fieldHeight={fieldHeight}
+                />
+              );
+            })}
           </View>
         )}
       </View>

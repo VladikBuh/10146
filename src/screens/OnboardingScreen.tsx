@@ -71,7 +71,7 @@ export function OnboardingScreen({ navigation }: OnboardingScreenProps) {
           <View style={styles.OnboardingScreenImageEnclave}>
             <Image
               source={step.image}
-              style={styles.OnboardingScreenImageSigil}
+              style={{ marginTop: 10 }}
               resizeMode="contain"
             />
           </View>
@@ -126,10 +126,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  OnboardingScreenImageSigil: {
-    width: '92%',
-    height: '100%',
-  },
+
   OnboardingScreenTitleFiligree: {
     ...typography.title,
     marginBottom: 12,
