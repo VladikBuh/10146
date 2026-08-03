@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   TabBarFacetChassis: {
     paddingBottom: 18,
     flexDirection: 'row',
-    backgroundColor: colors.cardMuted,
+    backgroundColor: 'rgba(53, 5, 97, 1)',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: colors.divider,
   },

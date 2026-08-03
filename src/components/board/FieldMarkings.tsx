@@ -1,6 +1,10 @@
 import { StyleSheet, View } from 'react-native';
 
-import { projectBoardRect, type BoardRect } from '../../data/tacticalBoard';
+import {
+  BOARD_DESIGN_WIDTH,
+  projectBoardRect,
+  type BoardRect,
+} from '../../data/tacticalBoard';
 
 import { colors } from '../../theme';
 
@@ -11,7 +15,12 @@ type FieldMarkingsProps = {
 };
 
 /** Design-space geometry of the artwork; projection handles the orientation. */
-const HALFWAY_LINE: BoardRect = { x: 21.5, y: 325.5, width: 315, height: 0 };
+const HALFWAY_LINE: BoardRect = {
+  x: 0,
+  y: 325.5,
+  width: BOARD_DESIGN_WIDTH,
+  height: 0,
+};
 const CENTER_CIRCLE: BoardRect = { x: 151, y: 298, width: 56, height: 56 };
 const PENALTY_BOX_NEAR_TOP: BoardRect = {
   x: 100.23,
@@ -32,6 +41,9 @@ export function FieldMarkings({ scale, transposed }: FieldMarkingsProps) {
   const firstBox = project(PENALTY_BOX_NEAR_TOP);
   const secondBox = project(PENALTY_BOX_NEAR_BOTTOM);
 
+  /** Keeps the stroke legible on small phones while it grows with the pitch. */
+  const stroke = Math.max(1.5, 2 * scale);
+
   /**
    * The boxes are rounded on the edge facing midfield. Transposing moves that
    * edge from vertical to horizontal, so the rounded corners follow.
@@ -51,8 +63,8 @@ export function FieldMarkings({ scale, transposed }: FieldMarkingsProps) {
           {
             left: line.x,
             top: line.y,
-            width: line.width || StyleSheet.hairlineWidth,
-            height: line.height || StyleSheet.hairlineWidth,
+            width: line.width || stroke,
+            height: line.height || stroke,
           },
         ]}
       />
@@ -65,6 +77,7 @@ export function FieldMarkings({ scale, transposed }: FieldMarkingsProps) {
             width: circle.width,
             height: circle.height,
             borderRadius: circle.width / 2,
+            borderWidth: stroke,
           },
         ]}
       />
@@ -77,6 +90,7 @@ export function FieldMarkings({ scale, transposed }: FieldMarkingsProps) {
             top: firstBox.y,
             width: firstBox.width,
             height: firstBox.height,
+            borderWidth: stroke,
           },
         ]}
       />
@@ -89,6 +103,7 @@ export function FieldMarkings({ scale, transposed }: FieldMarkingsProps) {
             top: secondBox.y,
             width: secondBox.width,
             height: secondBox.height,
+            borderWidth: stroke,
           },
         ]}
       />
@@ -99,20 +114,15 @@ export function FieldMarkings({ scale, transposed }: FieldMarkingsProps) {
 const styles = StyleSheet.create({
   FieldMarkingsHalfwayLine: {
     position: 'absolute',
-    backgroundColor: colors.divider,
-    opacity: 0.35,
+    backgroundColor: colors.fieldLine,
   },
   FieldMarkingsCenterCircle: {
     position: 'absolute',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.divider,
-    opacity: 0.25,
+    borderColor: colors.fieldLine,
   },
   FieldMarkingsPenaltyBox: {
     position: 'absolute',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.divider,
-    opacity: 0.22,
+    borderColor: colors.fieldLine,
   },
 
   FieldMarkingsPenaltyBoxTop: {

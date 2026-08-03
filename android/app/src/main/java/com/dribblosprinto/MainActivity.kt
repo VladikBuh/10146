@@ -1,4 +1,4 @@
-package com.dribblosprinto
+package com.dribblosprinto.planner
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

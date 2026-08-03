@@ -1,4 +1,4 @@
-package com.dribblosprinto
+package com.dribblosprinto.planner
 
 import android.app.Application
 import com.facebook.react.PackageList

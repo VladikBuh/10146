@@ -1,8 +1,8 @@
 export const colors = {
-  background: '#302866',
+  background: 'rgba(53, 5, 97, 1)',
   surfaceDark: '#1c1840',
-  card: '#473d82',
-  cardMuted: '#3d3475',
+  card: 'rgba(87, 12, 157, 1)',
+  cardMuted: 'rgba(87, 12, 157, 1)',
   imagePlaceholder: '#1e2a50',
   accent: '#f4c515',
   accentBright: '#fad429',
@@ -15,6 +15,7 @@ export const colors = {
   danger: '#ff4d4d',
   opponent: '#b9a7f5',
   divider: '#716a98',
+  fieldLine: 'rgba(255, 255, 255, 0.45)',
   homeIndicator: 'rgba(244, 246, 248, 0.3)',
 };
 

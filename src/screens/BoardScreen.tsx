@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 import {
   LayoutChangeEvent,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -35,14 +36,6 @@ export function BoardScreen() {
 
   const resetBoard = useCallback(() => setResetToken(token => token + 1), []);
 
-  /**
-   * The pitch keeps its authored aspect ratio and is centred in the available
-   * space, so one uniform scale drives markings, chip positions and chip size.
-   * Scaling each axis on its own stretched the board in landscape: chips grew
-   * with the wide axis while their Y coordinates were squashed, leaving them
-   * overlapped and clipped. In landscape the pitch is also transposed so it
-   * fills the wide axis rather than shrinking into a narrow strip.
-   */
   const transposed = available.width > available.height;
 
   const designWidth = transposed ? BOARD_DESIGN_HEIGHT : BOARD_DESIGN_WIDTH;
@@ -58,75 +51,80 @@ export function BoardScreen() {
   const chipSize = CHIP_SIZE * scale;
 
   return (
-    <View style={[styles.BoardScreenFacetChassis, { paddingTop: insets.top }]}>
-      <Text style={styles.BoardScreenHeadingFiligree}>Tactical Board</Text>
+    <View style={[styles.BoardScreenFacetChassis]}>
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1, paddingTop: insets.top }}
+        showsVerticalScrollIndicator={false}
+      >
+        <Text style={styles.BoardScreenHeadingFiligree}>Tactical Board</Text>
 
-      <View style={styles.BoardScreenLegendLintel}>
-        <View style={styles.BoardScreenLegendItemEnclave}>
-          <View
-            style={[
-              styles.BoardScreenLegendDot,
-              styles.BoardScreenLegendDotOwn,
-            ]}
-          />
-          <Text style={styles.BoardScreenLegendFiligree}>Your Team</Text>
-        </View>
+        <View style={styles.BoardScreenLegendLintel}>
+          <View style={styles.BoardScreenLegendItemEnclave}>
+            <View
+              style={[
+                styles.BoardScreenLegendDot,
+                styles.BoardScreenLegendDotOwn,
+              ]}
+            />
+            <Text style={styles.BoardScreenLegendFiligree}>Your Team</Text>
+          </View>
 
-        <View style={styles.BoardScreenLegendItemEnclave}>
-          <View
-            style={[
-              styles.BoardScreenLegendDot,
-              styles.BoardScreenLegendDotOpponent,
-            ]}
-          />
-          <Text style={styles.BoardScreenLegendFiligree}>Opponent</Text>
-        </View>
+          <View style={styles.BoardScreenLegendItemEnclave}>
+            <View
+              style={[
+                styles.BoardScreenLegendDot,
+                styles.BoardScreenLegendDotOpponent,
+              ]}
+            />
+            <Text style={styles.BoardScreenLegendFiligree}>Opponent</Text>
+          </View>
 
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Reset board"
-          hitSlop={8}
-          onPress={resetBoard}
-          style={({ pressed }) => [
-            styles.BoardScreenResetPortico,
-            pressed && styles.BoardScreenResetPorticoPressedDim,
-          ]}
-        >
-          <Text style={styles.BoardScreenResetFiligree}>Reset</Text>
-        </Pressable>
-      </View>
-
-      <View style={styles.BoardScreenFieldFrame} onLayout={handleFieldLayout}>
-        {scale > 0 && (
-          <View
-            style={[
-              styles.BoardScreenFieldEnclave,
-              { width: fieldWidth, height: fieldHeight },
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Reset board"
+            hitSlop={8}
+            onPress={resetBoard}
+            style={({ pressed }) => [
+              styles.BoardScreenResetPortico,
+              pressed && styles.BoardScreenResetPorticoPressedDim,
             ]}
           >
-            <FieldMarkings scale={scale} transposed={transposed} />
-            {boardChips.map(chip => {
-              const spot = projectBoardRect(
-                { x: chip.x, y: chip.y, width: CHIP_SIZE, height: CHIP_SIZE },
-                scale,
-                transposed,
-              );
+            <Text style={styles.BoardScreenResetFiligree}>Reset</Text>
+          </Pressable>
+        </View>
 
-              return (
-                <BoardChip
-                  key={`${chip.id}-${resetToken}-${fieldWidth}-${fieldHeight}`}
-                  team={chip.team}
-                  startX={spot.x}
-                  startY={spot.y}
-                  size={chipSize}
-                  fieldWidth={fieldWidth}
-                  fieldHeight={fieldHeight}
-                />
-              );
-            })}
-          </View>
-        )}
-      </View>
+        <View style={styles.BoardScreenFieldFrame} onLayout={handleFieldLayout}>
+          {scale > 0 && (
+            <View
+              style={[
+                styles.BoardScreenFieldEnclave,
+                { width: fieldWidth, height: fieldHeight },
+              ]}
+            >
+              <FieldMarkings scale={scale} transposed={transposed} />
+              {boardChips.map(chip => {
+                const spot = projectBoardRect(
+                  { x: chip.x, y: chip.y, width: CHIP_SIZE, height: CHIP_SIZE },
+                  scale,
+                  transposed,
+                );
+
+                return (
+                  <BoardChip
+                    key={`${chip.id}-${resetToken}-${fieldWidth}-${fieldHeight}`}
+                    team={chip.team}
+                    startX={spot.x}
+                    startY={spot.y}
+                    size={chipSize}
+                    fieldWidth={fieldWidth}
+                    fieldHeight={fieldHeight}
+                  />
+                );
+              })}
+            </View>
+          )}
+        </View>
+      </ScrollView>
     </View>
   );
 }
