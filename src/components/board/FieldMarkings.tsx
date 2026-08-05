@@ -65,21 +65,21 @@ export function FieldMarkings({ scaleX, scaleY }: FieldMarkingsProps) {
 const styles = StyleSheet.create({
   FieldMarkingsHalfwayLine: {
     position: 'absolute',
-    height: StyleSheet.hairlineWidth,
+    height: 1,
     backgroundColor: colors.divider,
-    opacity: 0.35,
+    opacity: 0.65,
   },
   FieldMarkingsCenterCircle: {
     position: 'absolute',
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 1,
     borderColor: colors.divider,
-    opacity: 0.25,
+    opacity: 0.55,
   },
   FieldMarkingsPenaltyBox: {
     position: 'absolute',
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 1,
     borderColor: colors.divider,
-    opacity: 0.22,
+    opacity: 0.5,
   },
 
   FieldMarkingsPenaltyBoxTop: {
