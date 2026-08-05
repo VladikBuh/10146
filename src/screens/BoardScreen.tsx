@@ -23,6 +23,7 @@ import { colors } from '../theme';
 
 export function BoardScreen() {
   const insets = useSafeAreaInsets();
+
   const [available, setAvailable] = useState({ width: 0, height: 0 });
 
   const [resetToken, setResetToken] = useState(0);
