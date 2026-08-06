@@ -1,7 +1,9 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { DrillDetailScreen } from '../screens/DrillDetailScreen';
+
 import { DrillsScreen } from '../screens/DrillsScreen';
+
 import type { DrillsStackParamList } from './types';
 
 const Stack = createNativeStackNavigator<DrillsStackParamList>();

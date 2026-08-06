@@ -11,9 +11,11 @@ import {
 } from 'react-native';
 
 import type { RootStackParamList } from '../navigation/types';
+
 import { colors } from '../theme';
 
 const LOADER_DURATION_MS = 3000;
+
 const BARS = [0, 1, 2];
 
 type LoaderScreenProps = NativeStackScreenProps<RootStackParamList, 'Loader'>;
@@ -79,7 +81,7 @@ export function LoaderScreen({ navigation }: LoaderScreenProps) {
 
   return (
     <ImageBackground
-      source={require('../assets/board-dribblo-loader-bg.png')}
+      source={require('../assets/guide-trainer-loader-bg.png')}
       resizeMode="cover"
       style={styles.LoaderScreenFacetChassis}
     >

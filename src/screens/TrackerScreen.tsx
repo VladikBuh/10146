@@ -3,6 +3,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { FormationSwitcher } from '../components/tracker/FormationSwitcher';
+
 import { PlayerCard } from '../components/tracker/PlayerCard';
 
 import { formations, type Formation, type StatKey } from '../data/formations';
@@ -35,6 +36,7 @@ export function TrackerScreen() {
   const insets = useSafeAreaInsets();
 
   const [formationIndex, setFormationIndex] = useState(0);
+
   const [isFinished, setIsFinished] = useState(false);
 
   const [players, setPlayers] = useState(() => buildRoster(formations[0]));
@@ -72,8 +74,6 @@ export function TrackerScreen() {
     setIsFinished(true);
   }, [formation, isFinished]);
 
-  // After the final whistle each section is ordered by the ranking rules;
-  // while the match is live the roster keeps its formation order.
   const { starters, substitutes } = useMemo(() => {
     const order = (list: TrackedPlayer[]) =>
       isFinished ? [...list].sort(compareByRanking) : list;
@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
   TrackerScreenSwitcherEnclave: {
     marginTop: 16,
   },
+
   TrackerScreenSectionLabelFiligree: {
     marginTop: 20,
     fontSize: 11,

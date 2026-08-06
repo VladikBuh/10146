@@ -13,6 +13,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { PeriodRow } from '../components/timer/PeriodRow';
 
 import { formatClock, matchPeriods } from '../data/matchPeriods';
+
 import { colors } from '../theme';
 
 type TimerStatus = 'idle' | 'running' | 'paused' | 'finished';
@@ -28,8 +29,10 @@ const periodSeconds = (index: number) => matchPeriods[index].minutes * 60;
 
 export function TimerScreen() {
   const insets = useSafeAreaInsets();
+
   const [status, setStatus] = useState<TimerStatus>('idle');
   const [periodIndex, setPeriodIndex] = useState(0);
+
   const [remaining, setRemaining] = useState(() => periodSeconds(0));
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -99,7 +102,7 @@ export function TimerScreen() {
 
         <View style={styles.TimerScreenStopwatchEnclave}>
           <Image
-            source={require('../assets/board-dribblo-stopwatch.png')}
+            source={require('../assets/guide-trainer-stopwatch.png')}
             style={styles.TimerScreenStopwatchSigil}
             resizeMode="contain"
           />

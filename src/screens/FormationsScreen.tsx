@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BulletNote } from '../components/formations/BulletNote';
 
 import { FormationPitch } from '../components/formations/FormationPitch';
+
 import { FormationSwitcher } from '../components/tracker/FormationSwitcher';
 import { formations } from '../data/formations';
 
@@ -13,6 +14,7 @@ import { colors } from '../theme';
 
 export function FormationsScreen() {
   const insets = useSafeAreaInsets();
+
   const [index, setIndex] = useState(0);
 
   const switchFormation = useCallback((step: number) => {

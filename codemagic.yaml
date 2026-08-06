@@ -10,8 +10,8 @@ workflows:
       vars:
         XCODE_WORKSPACE: 'DribbloSprinto.xcworkspace' # <----
         XCODE_SCHEME: 'DribbloSprinto' # <----
-        BUNDLE_ID: 'com.ghdskfjnfje.ehdahfbjsa' # <----
-        APP_STORE_APP_ID: 6798342104 # <----
+        BUNDLE_ID: 'com.jfjsdnkfsdn.sdfbsamnd' # <----
+        APP_STORE_APP_ID: 6798837338 # <----
         APP_STORE_CONNECT_KEY_ID: 'U4Z88V565T' # <----
         APP_STORE_CONNECT_ISSUER_ID: 'de5e8441-6b56-430a-89b1-4cdd19b443f5' # <----
         node: latest

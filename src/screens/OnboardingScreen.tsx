@@ -15,6 +15,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StepDots } from '../components/StepDots';
 
 import { onboardingSteps } from '../data/onboardingSteps';
+
 import type { RootStackParamList } from '../navigation/types';
 
 import { colors, typography } from '../theme';
@@ -26,11 +27,13 @@ type OnboardingScreenProps = NativeStackScreenProps<
 
 export function OnboardingScreen({ navigation }: OnboardingScreenProps) {
   const insets = useSafeAreaInsets();
+
   const [stepIndex, setStepIndex] = useState(0);
 
   const fade = useRef(new Animated.Value(1)).current;
 
   const step = onboardingSteps[stepIndex];
+
   const isLastStep = stepIndex === onboardingSteps.length - 1;
 
   useEffect(() => {

@@ -5,10 +5,12 @@ import {
 
 import { TabBar } from '../components/nav/TabBar';
 import { BoardScreen } from '../screens/BoardScreen';
+
 import { FormationsScreen } from '../screens/FormationsScreen';
 
 import { TimerScreen } from '../screens/TimerScreen';
 import { TipsScreen } from '../screens/TipsScreen';
+
 import { TrackerScreen } from '../screens/TrackerScreen';
 
 import { DrillsNavigator } from './DrillsNavigator';

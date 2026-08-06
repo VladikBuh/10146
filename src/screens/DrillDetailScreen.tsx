@@ -15,6 +15,7 @@ import { ShareButton } from '../components/ShareButton';
 import { buildDrillShareMessage, drills } from '../data/drills';
 
 import type { DrillsStackParamList } from '../navigation/types';
+
 import { colors } from '../theme';
 
 type DrillDetailScreenProps = NativeStackScreenProps<
@@ -27,6 +28,7 @@ export function DrillDetailScreen({
   navigation,
 }: DrillDetailScreenProps) {
   const insets = useSafeAreaInsets();
+
   const drill = drills.find(item => item.id === route.params.drillId);
 
   if (!drill) {
@@ -54,7 +56,7 @@ export function DrillDetailScreen({
             ]}
           >
             <Image
-              source={require('../assets/board-dribblo-back.png')}
+              source={require('../assets/guide-trainer-back.png')}
               style={styles.DrillDetailScreenBackSigil}
             />
           </Pressable>

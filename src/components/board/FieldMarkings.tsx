@@ -69,12 +69,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.divider,
     opacity: 0.65,
   },
+
   FieldMarkingsCenterCircle: {
     position: 'absolute',
     borderWidth: 1,
     borderColor: colors.divider,
     opacity: 0.55,
   },
+
   FieldMarkingsPenaltyBox: {
     position: 'absolute',
     borderWidth: 1,

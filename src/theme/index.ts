@@ -6,13 +6,16 @@ export const colors = {
   imagePlaceholder: '#1e2a50',
   accent: '#f4c515',
   accentBright: '#fad429',
+
   textPrimary: '#f4f6f8',
   textSecondary: '#e6e6e6',
   headingLight: '#f5f3fa',
   textMuted: '#b8b3cf',
+
   textFaint: '#716a98',
   bodyWarm: '#ede8d8',
   danger: '#ff4d4d',
+
   opponent: '#b9a7f5',
   divider: '#716a98',
   homeIndicator: 'rgba(244, 246, 248, 0.3)',

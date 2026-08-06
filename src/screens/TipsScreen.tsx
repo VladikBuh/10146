@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { TipCard } from '../components/tips/TipCard';
+
 import { tips } from '../data/tips';
 
 import { colors } from '../theme';
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
+
   TipsScreenScrollContent: {
     paddingHorizontal: 16,
     paddingBottom: 28,

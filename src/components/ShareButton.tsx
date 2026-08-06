@@ -28,7 +28,7 @@ export function ShareButton({ title, message, style }: ShareButtonProps) {
       ]}
     >
       <Image
-        source={require('../assets/board-dribblo-share.png')}
+        source={require('../assets/guide-trainer-share.png')}
         style={styles.ShareButtonIconSigil}
       />
     </Pressable>

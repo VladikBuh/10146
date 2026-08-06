@@ -1,4 +1,5 @@
 import { useMemo, useRef } from 'react';
+
 import { Animated, PanResponder, StyleSheet } from 'react-native';
 
 import { CHIP_SIZE, type BoardTeam } from '../../data/tacticalBoard';
@@ -84,6 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.accent,
     borderColor: 'rgba(255, 255, 255, 0.25)',
   },
+
   BoardChipFacetChassisOpponent: {
     backgroundColor: colors.opponent,
     borderColor: 'rgba(255, 255, 255, 0.18)',
