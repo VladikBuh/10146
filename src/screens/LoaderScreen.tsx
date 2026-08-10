@@ -81,7 +81,7 @@ export function LoaderScreen({ navigation }: LoaderScreenProps) {
 
   return (
     <ImageBackground
-      source={require('../assets/guide-trainer-loader-bg.png')}
+      source={require('../assets/tactical-formations-loader-bg.png')}
       resizeMode="cover"
       style={styles.LoaderScreenFacetChassis}
     >

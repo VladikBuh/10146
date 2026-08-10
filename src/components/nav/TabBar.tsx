@@ -23,13 +23,13 @@ const TAB_LABELS: Record<TabKey, string> = {
 };
 
 const TAB_ICONS: Record<TabKey, ImageSourcePropType> = {
-  FormationsTab: require('../../assets/guide-trainer-tab-formations.png'),
-  BoardTab: require('../../assets/guide-trainer-tab-board.png'),
+  FormationsTab: require('../../assets/tactical-formations-tab-formations.png'),
+  BoardTab: require('../../assets/tactical-formations-tab-board.png'),
 
-  TrackerTab: require('../../assets/guide-trainer-tab-tracker.png'),
-  DrillsTab: require('../../assets/guide-trainer-tab-drills.png'),
-  TimerTab: require('../../assets/guide-trainer-tab-timer.png'),
-  TipsTab: require('../../assets/guide-trainer-tab-tips.png'),
+  TrackerTab: require('../../assets/tactical-formations-tab-tracker.png'),
+  DrillsTab: require('../../assets/tactical-formations-tab-drills.png'),
+  TimerTab: require('../../assets/tactical-formations-tab-timer.png'),
+  TipsTab: require('../../assets/tactical-formations-tab-tips.png'),
 };
 
 export function TabBar({ state, navigation }: BottomTabBarProps) {

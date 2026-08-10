@@ -70,7 +70,7 @@ export const formations: Formation[] = [
     id: 'diamond',
     name: '1–2–1 Diamond',
     positions: field('CB', 'LM', 'RM', 'ST'),
-    image: require('../assets/guide-trainer-diamond-formation.png'),
+    image: require('../assets/tactical-formations-diamond-formation.png'),
     advantages:
       'The Diamond formation provides strong control through the center of the court while maintaining clear passing options in every direction. It offers a good balance between attack and defense and supports quick transitions after winning possession.',
     disadvantages:
@@ -80,7 +80,7 @@ export const formations: Formation[] = [
     id: 'defensive',
     name: '2–1–1 Defensive',
     positions: field('LB', 'RB', 'CM', 'ST'),
-    image: require('../assets/guide-trainer-defensive-wall.png'),
+    image: require('../assets/tactical-formations-defensive-wall.png'),
     advantages:
       'Two defenders create a solid defensive base that is difficult to break down. This setup is ideal against stronger attacking teams and allows quick counterattacks through the advanced players.',
     disadvantages:
@@ -91,7 +91,7 @@ export const formations: Formation[] = [
     id: 'attacking',
     name: '1–1–2 Attacking',
     positions: field('CB', 'CM', 'LF', 'RF'),
-    image: require('../assets/guide-trainer-attacking-front.png'),
+    image: require('../assets/tactical-formations-attacking-front.png'),
     advantages:
       'With two advanced players, this formation creates multiple scoring opportunities and constant pressure near the opponent’s goal. It works well for teams that prefer aggressive, high-tempo football.',
     disadvantages:
@@ -101,7 +101,7 @@ export const formations: Formation[] = [
     id: 'box',
     name: '2–2 Box',
     positions: field('LB', 'RB', 'LF', 'RF'),
-    image: require('../assets/guide-trainer-box-formation.png'),
+    image: require('../assets/tactical-formations-box-formation.png'),
     advantages:
       'The Box formation offers excellent balance between defense and attack while providing simple passing angles. It is easy to understand and suits teams with mixed experience levels.',
     disadvantages:
@@ -111,7 +111,7 @@ export const formations: Formation[] = [
     id: 'high-press',
     name: '1–3 High Press',
     positions: field('CB', 'LF', 'CF', 'RF'),
-    image: require('../assets/guide-trainer-high-press.png'),
+    image: require('../assets/tactical-formations-high-press.png'),
     advantages:
       'Three advanced players allow immediate pressure after losing possession and create many opportunities to recover the ball high up the pitch. The formation is ideal for fast, energetic teams.',
     disadvantages:
@@ -121,7 +121,7 @@ export const formations: Formation[] = [
     id: 'counter',
     name: '3–1 Counter',
     positions: field('LB', 'CB', 'RB', 'ST'),
-    image: require('../assets/guide-trainer-counter-defense.png'),
+    image: require('../assets/tactical-formations-counter-defense.png'),
     advantages:
       'Three defenders provide excellent protection while the lone striker stays ready for quick counterattacks. This formation is effective when facing technically stronger opponents.',
     disadvantages:
@@ -131,7 +131,7 @@ export const formations: Formation[] = [
     id: 'wide-diamond',
     name: '1–2–1 Wide Diamond',
     positions: field('CB', 'LW', 'RW', 'ST'),
-    image: require('../assets/guide-trainer-wide-diamond.png'),
+    image: require('../assets/tactical-formations-wide-diamond.png'),
     advantages:
       'This variation stretches the field horizontally and creates wider passing lanes. It is useful against compact defenses and helps generate crossing or diagonal passing opportunities.',
     disadvantages:
@@ -141,7 +141,7 @@ export const formations: Formation[] = [
     id: 'high-block',
     name: '2–1–1 High Block',
     positions: field('LB', 'RB', 'CM', 'ST'),
-    image: require('../assets/guide-trainer-high-block.png'),
+    image: require('../assets/tactical-formations-high-block.png'),
     advantages:
       "The team maintains a compact defensive structure while positioning attacking players closer to the opponent's half. It supports controlled pressing without sacrificing defensive stability.",
     disadvantages:
@@ -151,7 +151,7 @@ export const formations: Formation[] = [
     id: 'rotating',
     name: 'Rotating Formation',
     positions: field('CB', 'CM', 'LF', 'RF'),
-    image: require('../assets/guide-trainer-rotating-formation.png'),
+    image: require('../assets/tactical-formations-rotating-formation.png'),
     advantages:
       'Players continuously exchange positions, making the attack less predictable and creating confusion for defenders. This approach improves movement, flexibility, and ball circulation.',
     disadvantages:
@@ -161,7 +161,7 @@ export const formations: Formation[] = [
     id: 'balanced-press',
     name: 'Balanced Press',
     positions: field('CB', 'LM', 'RM', 'ST'),
-    image: require('../assets/guide-trainer-balanced-press.png'),
+    image: require('../assets/tactical-formations-balanced-press.png'),
     advantages:
       'This formation combines moderate pressing with strong defensive organization, making it effective in most match situations. It provides reliable passing options while keeping the team compact.',
     disadvantages:

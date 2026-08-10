@@ -102,7 +102,7 @@ export function TimerScreen() {
 
         <View style={styles.TimerScreenStopwatchEnclave}>
           <Image
-            source={require('../assets/guide-trainer-stopwatch.png')}
+            source={require('../assets/tactical-formations-stopwatch.png')}
             style={styles.TimerScreenStopwatchSigil}
             resizeMode="contain"
           />

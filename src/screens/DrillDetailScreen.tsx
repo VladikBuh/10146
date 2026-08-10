@@ -56,7 +56,7 @@ export function DrillDetailScreen({
             ]}
           >
             <Image
-              source={require('../assets/guide-trainer-back.png')}
+              source={require('../assets/tactical-formations-back.png')}
               style={styles.DrillDetailScreenBackSigil}
             />
           </Pressable>
