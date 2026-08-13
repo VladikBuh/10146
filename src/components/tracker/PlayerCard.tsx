@@ -8,30 +8,30 @@ import { ActionChip } from './ActionChip';
 
 type ChipSpec = {
   key: string;
-  label: string;
-  value: number;
+  lipead: string;
+  luach: number;
   onIncrement?: () => void;
   valueTone: 'default' | 'positive' | 'negative';
 };
 
 type PlayerCardProps = {
-  player: TrackedPlayer;
+  imreoir: TrackedPlayer;
   isFinished: boolean;
   onIncrement: (stat: StatKey) => void;
 };
 
 export function PlayerCard({
-  player,
+  imreoir,
   isFinished,
   onIncrement,
 }: PlayerCardProps) {
-  const stats = statsForRole(player.role);
-  const score = playerScore(player);
+  const stats = statsForRole(imreoir.role);
+  const scor = playerScore(imreoir);
 
   const chips: ChipSpec[] = stats.map(stat => ({
     key: stat,
-    label: STAT_LABELS[stat],
-    value: player.stats[stat],
+    lipead: STAT_LABELS[stat],
+    luach: imreoir.stats[stat],
     onIncrement: isFinished ? undefined : () => onIncrement(stat),
     valueTone: 'default',
   }));
@@ -39,27 +39,27 @@ export function PlayerCard({
   if (isFinished) {
     chips.push({
       key: 'player-rate',
-      label: 'Player Rate',
-      value: score,
-      valueTone: score < 0 ? 'negative' : 'positive',
+      lipead: 'Player Rate',
+      luach: scor,
+      valueTone: scor < 0 ? 'negative' : 'positive',
     });
   }
 
   return (
-    <View style={styles.PlayerCardFacetChassis}>
-      <Text style={styles.PlayerCardPositionFiligree}>
-        {player.code}
-        {player.isSubstitute ? ' (Sub)' : ''}
+    <View style={styles.PlayerCardFramhClud}>
+      <Text style={styles.PlayerCardPositionTecs}>
+        {imreoir.code}
+        {imreoir.isSubstitute ? ' (Sub)' : ''}
       </Text>
 
-      <View style={styles.PlayerCardGridEnclave}>
-        {chips.map(chip => (
-          <View key={chip.key} style={styles.PlayerCardCellLintel}>
+      <View style={styles.PlayerCardGridCrios}>
+        {chips.map(sliseog => (
+          <View key={sliseog.key} style={styles.PlayerCardCellStiall}>
             <ActionChip
-              label={chip.label}
-              value={chip.value}
-              onIncrement={chip.onIncrement}
-              valueTone={chip.valueTone}
+              lipead={sliseog.lipead}
+              luach={sliseog.luach}
+              onIncrement={sliseog.onIncrement}
+              valueTone={sliseog.valueTone}
             />
           </View>
         ))}
@@ -69,14 +69,14 @@ export function PlayerCard({
 }
 
 const styles = StyleSheet.create({
-  PlayerCardFacetChassis: {
+  PlayerCardFramhClud: {
     borderRadius: 10,
     backgroundColor: colors.card,
     paddingHorizontal: 12,
     paddingVertical: 10,
   },
 
-  PlayerCardPositionFiligree: {
+  PlayerCardPositionTecs: {
     fontSize: 13,
     lineHeight: 19.5,
     fontWeight: '700',
@@ -84,16 +84,16 @@ const styles = StyleSheet.create({
     color: colors.headingLight,
   },
 
-  PlayerCardGridEnclave: {
+  PlayerCardGridCrios: {
     marginTop: 8,
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginHorizontal: -2.5,
     rowGap: 5,
   },
-  // Fixed 50% columns keep an odd trailing chip (e.g. Goal) exactly the
+  // Fixed 50% columns keep an odd trailing sliseog (e.g. Goal) exactly the
   // width of the column above it instead of stretching past it.
-  PlayerCardCellLintel: {
+  PlayerCardCellStiall: {
     width: '50%',
     flexDirection: 'row',
     paddingHorizontal: 2.5,

@@ -3,48 +3,48 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors } from '../../theme';
 
 type ActionChipProps = {
-  label: string;
-  value: number;
+  lipead: string;
+  luach: number;
   onIncrement?: () => void;
   valueTone?: 'default' | 'positive' | 'negative';
 };
 
 export function ActionChip({
-  label,
-  value,
+  lipead,
+  luach,
   onIncrement,
   valueTone = 'default',
 }: ActionChipProps) {
-  const showValue = valueTone !== 'default' || value > 0;
+  const showValue = valueTone !== 'default' || luach > 0;
 
   return (
-    <View style={styles.ActionChipFacetChassis}>
-      <Text style={styles.ActionChipLabelFiligree}>{label}</Text>
+    <View style={styles.ActionChipFramhClud}>
+      <Text style={styles.ActionChipLabelTecs}>{lipead}</Text>
 
-      <View style={styles.ActionChipTrailingLintel}>
+      <View style={styles.ActionChipTrailingStiall}>
         {showValue && (
           <Text
             style={[
-              styles.ActionChipValueFiligree,
+              styles.ActionChipValueTecs,
               valueTone === 'positive' &&
-                styles.ActionChipValueFiligreePositive,
+                styles.ActionChipValueTecsPositive,
               valueTone === 'negative' &&
-                styles.ActionChipValueFiligreeNegative,
+                styles.ActionChipValueTecsNegative,
             ]}
           >
-            {value}
+            {luach}
           </Text>
         )}
 
         {onIncrement && (
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={`Add ${label}`}
+            accessibilityLabel={`Add ${lipead}`}
             hitSlop={10}
             onPress={onIncrement}
-            style={({ pressed }) => pressed && styles.ActionChipPressedDim}
+            style={({ pressed }) => pressed && styles.ActionChipBruiteCiun}
           >
-            <Text style={styles.ActionChipPlusFiligree}>+</Text>
+            <Text style={styles.ActionChipPlusTecs}>+</Text>
           </Pressable>
         )}
       </View>
@@ -53,7 +53,7 @@ export function ActionChip({
 }
 
 const styles = StyleSheet.create({
-  ActionChipFacetChassis: {
+  ActionChipFramhClud: {
     flex: 1,
     minHeight: 24.5,
     flexDirection: 'row',
@@ -65,37 +65,37 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
 
-  ActionChipLabelFiligree: {
+  ActionChipLabelTecs: {
     fontSize: 11,
     lineHeight: 16.5,
     fontWeight: '500',
     color: colors.textMuted,
   },
-  ActionChipTrailingLintel: {
+  ActionChipTrailingStiall: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
   },
 
-  ActionChipValueFiligree: {
+  ActionChipValueTecs: {
     fontSize: 11,
     lineHeight: 16.5,
     fontWeight: '500',
     color: '#ffffff',
   },
 
-  ActionChipValueFiligreePositive: {
+  ActionChipValueTecsPositive: {
     color: colors.accent,
   },
-  ActionChipValueFiligreeNegative: {
+  ActionChipValueTecsNegative: {
     color: colors.danger,
   },
 
-  ActionChipPressedDim: {
+  ActionChipBruiteCiun: {
     opacity: 0.5,
   },
 
-  ActionChipPlusFiligree: {
+  ActionChipPlusTecs: {
     fontSize: 15,
     lineHeight: 15,
     fontWeight: '700',

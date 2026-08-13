@@ -18,7 +18,7 @@ import type { MainTabParamList } from './types';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
-const renderTabBar = (props: BottomTabBarProps) => <TabBar {...props} />;
+const renderTabBar = (airionna: BottomTabBarProps) => <TabBar {...airionna} />;
 
 export function MainTabNavigator() {
   return (

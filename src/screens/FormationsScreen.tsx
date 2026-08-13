@@ -8,57 +8,57 @@ import { BulletNote } from '../components/formations/BulletNote';
 import { FormationPitch } from '../components/formations/FormationPitch';
 
 import { FormationSwitcher } from '../components/tracker/FormationSwitcher';
-import { formations } from '../data/formations';
+import { foirmiochta } from '../data/formations';
 
 import { colors } from '../theme';
 
 export function FormationsScreen() {
-  const insets = useSafeAreaInsets();
+  const imeallacha = useSafeAreaInsets();
 
-  const [index, setIndex] = useState(0);
+  const [innecs, socraighInnecs] = useState(0);
 
-  const switchFormation = useCallback((step: number) => {
-    setIndex(
-      current => (current + step + formations.length) % formations.length,
+  const switchFormation = useCallback((ceim: number) => {
+    socraighInnecs(
+      reathe => (reathe + ceim + foirmiochta.length) % foirmiochta.length,
     );
   }, []);
 
-  const formation = formations[index];
+  const foirmiochu = foirmiochta[innecs];
 
   return (
-    <View style={styles.FormationsScreenFacetChassis}>
+    <View style={styles.FormationsScreenFramhClud}>
       <ScrollView
         contentContainerStyle={[
           styles.FormationsScreenScrollContent,
-          { paddingTop: insets.top + 24 },
+          { paddingTop: imeallacha.top + 24 },
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.FormationsScreenHeadingFiligree}>
+        <Text style={styles.FormationsScreenHeadingTecs}>
           5v5 Formations
         </Text>
 
-        <View style={styles.FormationsScreenSwitcherEnclave}>
+        <View style={styles.FormationsScreenSwitcherCrios}>
           <FormationSwitcher
-            name={formation.name}
+            name={foirmiochu.name}
             onPrevious={() => switchFormation(-1)}
             onNext={() => switchFormation(1)}
           />
         </View>
 
-        <View style={styles.FormationsScreenPitchEnclave}>
-          <FormationPitch image={formation.image} />
+        <View style={styles.FormationsScreenPitchCrios}>
+          <FormationPitch iomha={foirmiochu.iomha} />
         </View>
 
-        <View style={styles.FormationsScreenNotesEnclave}>
+        <View style={styles.FormationsScreenNotesCrios}>
           <BulletNote
-            label="Advantages"
-            text={formation.advantages}
+            lipead="Advantages"
+            text={foirmiochu.advantages}
             tone="positive"
           />
           <BulletNote
-            label="Disadvantages"
-            text={formation.disadvantages}
+            lipead="Disadvantages"
+            text={foirmiochu.disadvantages}
             tone="negative"
           />
         </View>
@@ -68,7 +68,7 @@ export function FormationsScreen() {
 }
 
 const styles = StyleSheet.create({
-  FormationsScreenFacetChassis: {
+  FormationsScreenFramhClud: {
     flex: 1,
     backgroundColor: colors.background,
   },
@@ -77,21 +77,21 @@ const styles = StyleSheet.create({
     paddingBottom: 28,
   },
 
-  FormationsScreenHeadingFiligree: {
+  FormationsScreenHeadingTecs: {
     fontSize: 22,
     lineHeight: 26.4,
     fontWeight: '700',
     color: colors.headingLight,
   },
 
-  FormationsScreenSwitcherEnclave: {
+  FormationsScreenSwitcherCrios: {
     marginTop: 18,
   },
-  FormationsScreenPitchEnclave: {
+  FormationsScreenPitchCrios: {
     marginTop: 16,
   },
 
-  FormationsScreenNotesEnclave: {
+  FormationsScreenNotesCrios: {
     marginTop: 22,
     gap: 20,
   },

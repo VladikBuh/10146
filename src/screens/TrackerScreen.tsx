@@ -6,7 +6,7 @@ import { FormationSwitcher } from '../components/tracker/FormationSwitcher';
 
 import { PlayerCard } from '../components/tracker/PlayerCard';
 
-import { formations, type Formation, type StatKey } from '../data/formations';
+import { foirmiochta, type Formation, type StatKey } from '../data/formations';
 
 import { colors } from '../theme';
 import {
@@ -15,116 +15,116 @@ import {
   type TrackedPlayer,
 } from '../utils/matchScore';
 
-const buildRoster = (formation: Formation): TrackedPlayer[] => [
-  ...formation.positions.map(position => ({
-    id: `starter-${position.code}`,
-    code: position.code,
-    role: position.role,
+const buildRoster = (foirmiochu: Formation): TrackedPlayer[] => [
+  ...foirmiochu.positions.map(suiomh => ({
+    id: `starter-${suiomh.code}`,
+    code: suiomh.code,
+    role: suiomh.role,
     isSubstitute: false,
     stats: emptyStats(),
   })),
-  ...formation.positions.map(position => ({
-    id: `sub-${position.code}`,
-    code: position.code,
-    role: position.role,
+  ...foirmiochu.positions.map(suiomh => ({
+    id: `sub-${suiomh.code}`,
+    code: suiomh.code,
+    role: suiomh.role,
     isSubstitute: true,
     stats: emptyStats(),
   })),
 ];
 
 export function TrackerScreen() {
-  const insets = useSafeAreaInsets();
+  const imeallacha = useSafeAreaInsets();
 
   const [formationIndex, setFormationIndex] = useState(0);
 
   const [isFinished, setIsFinished] = useState(false);
 
-  const [players, setPlayers] = useState(() => buildRoster(formations[0]));
+  const [imreoiri, socraighImreoiri] = useState(() => buildRoster(foirmiochta[0]));
 
-  const formation = formations[formationIndex];
+  const foirmiochu = foirmiochta[formationIndex];
 
-  const switchFormation = useCallback((step: number) => {
-    setFormationIndex(current => {
-      const next = (current + step + formations.length) % formations.length;
-      setPlayers(buildRoster(formations[next]));
+  const switchFormation = useCallback((ceim: number) => {
+    setFormationIndex(reathe => {
+      const seo = (reathe + ceim + foirmiochta.length) % foirmiochta.length;
+      socraighImreoiri(buildRoster(foirmiochta[seo]));
       setIsFinished(false);
-      return next;
+      return seo;
     });
   }, []);
 
   const incrementStat = useCallback((playerId: string, stat: StatKey) => {
-    setPlayers(current =>
-      current.map(player =>
-        player.id === playerId
+    socraighImreoiri(reathe =>
+      reathe.map(imreoir =>
+        imreoir.id === playerId
           ? {
-              ...player,
-              stats: { ...player.stats, [stat]: player.stats[stat] + 1 },
+              ...imreoir,
+              stats: { ...imreoir.stats, [stat]: imreoir.stats[stat] + 1 },
             }
-          : player,
+          : imreoir,
       ),
     );
   }, []);
 
   const handleMatchAction = useCallback(() => {
     if (isFinished) {
-      setPlayers(buildRoster(formation));
+      socraighImreoiri(buildRoster(foirmiochu));
       setIsFinished(false);
       return;
     }
     setIsFinished(true);
-  }, [formation, isFinished]);
+  }, [foirmiochu, isFinished]);
 
   const { starters, substitutes } = useMemo(() => {
     const order = (list: TrackedPlayer[]) =>
       isFinished ? [...list].sort(compareByRanking) : list;
 
     return {
-      starters: order(players.filter(player => !player.isSubstitute)),
-      substitutes: order(players.filter(player => player.isSubstitute)),
+      starters: order(imreoiri.filter(imreoir => !imreoir.isSubstitute)),
+      substitutes: order(imreoiri.filter(imreoir => imreoir.isSubstitute)),
     };
-  }, [players, isFinished]);
+  }, [imreoiri, isFinished]);
 
-  const renderPlayer = (player: TrackedPlayer) => (
+  const renderPlayer = (imreoir: TrackedPlayer) => (
     <PlayerCard
-      key={player.id}
-      player={player}
+      key={imreoir.id}
+      imreoir={imreoir}
       isFinished={isFinished}
-      onIncrement={stat => incrementStat(player.id, stat)}
+      onIncrement={stat => incrementStat(imreoir.id, stat)}
     />
   );
 
   return (
-    <View style={styles.TrackerScreenFacetChassis}>
+    <View style={styles.TrackerScreenFramhClud}>
       <ScrollView
         contentContainerStyle={[
           styles.TrackerScreenScrollContent,
-          { paddingTop: insets.top + 24 },
+          { paddingTop: imeallacha.top + 24 },
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.TrackerScreenHeadingFiligree}>
+        <Text style={styles.TrackerScreenHeadingTecs}>
           Mini Match Tracker
         </Text>
 
-        <View style={styles.TrackerScreenSwitcherEnclave}>
+        <View style={styles.TrackerScreenSwitcherCrios}>
           <FormationSwitcher
-            name={formation.name}
+            name={foirmiochu.name}
             onPrevious={() => switchFormation(-1)}
             onNext={() => switchFormation(1)}
           />
         </View>
 
-        <Text style={styles.TrackerScreenSectionLabelFiligree}>
+        <Text style={styles.TrackerScreenSectionLabelTecs}>
           Starting Five
         </Text>
-        <View style={styles.TrackerScreenSectionEnclave}>
+        <View style={styles.TrackerScreenSectionCrios}>
           {starters.map(renderPlayer)}
         </View>
 
-        <Text style={styles.TrackerScreenSectionLabelFiligree}>
+        <Text style={styles.TrackerScreenSectionLabelTecs}>
           Substitutes
         </Text>
-        <View style={styles.TrackerScreenSectionEnclave}>
+        <View style={styles.TrackerScreenSectionCrios}>
           {substitutes.map(renderPlayer)}
         </View>
 
@@ -132,11 +132,11 @@ export function TrackerScreen() {
           accessibilityRole="button"
           onPress={handleMatchAction}
           style={({ pressed }) => [
-            styles.TrackerScreenPortico,
-            pressed && styles.TrackerScreenPorticoPressedDim,
+            styles.TrackerScreenCnaip,
+            pressed && styles.TrackerScreenCnaipBruiteCiun,
           ]}
         >
-          <Text style={styles.TrackerScreenPorticoFiligree}>
+          <Text style={styles.TrackerScreenCnaipTecs}>
             {isFinished ? 'New Match' : 'Finish Match'}
           </Text>
         </Pressable>
@@ -146,7 +146,7 @@ export function TrackerScreen() {
 }
 
 const styles = StyleSheet.create({
-  TrackerScreenFacetChassis: {
+  TrackerScreenFramhClud: {
     flex: 1,
     backgroundColor: colors.background,
   },
@@ -156,17 +156,17 @@ const styles = StyleSheet.create({
     paddingBottom: 28,
   },
 
-  TrackerScreenHeadingFiligree: {
+  TrackerScreenHeadingTecs: {
     fontSize: 22,
     lineHeight: 26.4,
     fontWeight: '700',
     color: colors.headingLight,
   },
-  TrackerScreenSwitcherEnclave: {
+  TrackerScreenSwitcherCrios: {
     marginTop: 16,
   },
 
-  TrackerScreenSectionLabelFiligree: {
+  TrackerScreenSectionLabelTecs: {
     marginTop: 20,
     fontSize: 11,
     lineHeight: 16.5,
@@ -176,12 +176,12 @@ const styles = StyleSheet.create({
     color: colors.accent,
   },
 
-  TrackerScreenSectionEnclave: {
+  TrackerScreenSectionCrios: {
     marginTop: 10,
     gap: 8,
   },
 
-  TrackerScreenPortico: {
+  TrackerScreenCnaip: {
     marginTop: 22,
     height: 52,
     borderRadius: 12,
@@ -190,11 +190,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  TrackerScreenPorticoPressedDim: {
+  TrackerScreenCnaipBruiteCiun: {
     opacity: 0.85,
   },
 
-  TrackerScreenPorticoFiligree: {
+  TrackerScreenCnaipTecs: {
     fontSize: 16,
     lineHeight: 24,
     letterSpacing: 0.3,

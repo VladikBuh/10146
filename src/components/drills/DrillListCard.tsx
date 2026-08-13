@@ -7,49 +7,49 @@ import { MetaChip } from '../MetaChip';
 import { ShareButton } from '../ShareButton';
 
 type DrillListCardProps = {
-  drill: Drill;
+  cleachtadh: Drill;
   onPress: () => void;
 };
 
-export function DrillListCard({ drill, onPress }: DrillListCardProps) {
+export function DrillListCard({ cleachtadh, onPress }: DrillListCardProps) {
   return (
     <Pressable
       accessibilityRole="button"
       onPress={onPress}
       style={({ pressed }) => [
-        styles.DrillListCardFacetChassis,
-        pressed && styles.DrillListCardPressedDim,
+        styles.DrillListCardFramhClud,
+        pressed && styles.DrillListCardBruiteCiun,
       ]}
     >
-      <View style={styles.DrillListCardCoverEnclave}>
+      <View style={styles.DrillListCardCoverCrios}>
         <Image
-          source={drill.image}
-          style={styles.DrillListCardCoverSigil}
+          source={cleachtadh.iomha}
+          style={styles.DrillListCardCoverMarc}
           resizeMode="cover"
         />
       </View>
 
-      <View style={styles.DrillListCardBodyEnclave}>
-        <View style={styles.DrillListCardHeaderLintel}>
-          <View style={styles.DrillListCardBadgeEnclave}>
-            <Text style={styles.DrillListCardBadgeFiligree}>
-              {drill.category}
+      <View style={styles.DrillListCardBodyCrios}>
+        <View style={styles.DrillListCardHeaderStiall}>
+          <View style={styles.DrillListCardBadgeCrios}>
+            <Text style={styles.DrillListCardBadgeTecs}>
+              {cleachtadh.category}
             </Text>
           </View>
           <ShareButton
-            title={drill.title}
-            message={buildDrillShareMessage(drill)}
+            teideal={cleachtadh.teideal}
+            message={buildDrillShareMessage(cleachtadh)}
           />
         </View>
 
-        <Text style={styles.DrillListCardTitleFiligree}>{drill.title}</Text>
-        <Text style={styles.DrillListCardDescriptionFiligree}>
-          {drill.shortDescription}
+        <Text style={styles.DrillListCardTitleTecs}>{cleachtadh.teideal}</Text>
+        <Text style={styles.DrillListCardDescriptionTecs}>
+          {cleachtadh.shortDescription}
         </Text>
 
-        <View style={styles.DrillListCardMetaLintel}>
-          <MetaChip label="Duration" value={drill.duration} />
-          <MetaChip label="Difficulty" value={drill.difficulty} />
+        <View style={styles.DrillListCardMetaStiall}>
+          <MetaChip lipead="Duration" luach={cleachtadh.fad} />
+          <MetaChip lipead="Difficulty" luach={cleachtadh.difficulty} />
         </View>
       </View>
     </Pressable>
@@ -57,41 +57,41 @@ export function DrillListCard({ drill, onPress }: DrillListCardProps) {
 }
 
 const styles = StyleSheet.create({
-  DrillListCardFacetChassis: {
+  DrillListCardFramhClud: {
     borderRadius: 12,
     backgroundColor: colors.card,
     overflow: 'hidden',
   },
 
-  DrillListCardPressedDim: {
+  DrillListCardBruiteCiun: {
     opacity: 0.9,
   },
 
-  DrillListCardCoverEnclave: {
+  DrillListCardCoverCrios: {
     height: 172,
     backgroundColor: colors.cardMuted,
   },
-  DrillListCardCoverSigil: {
+  DrillListCardCoverMarc: {
     width: '100%',
     height: '100%',
   },
-  DrillListCardBodyEnclave: {
+  DrillListCardBodyCrios: {
     padding: 16,
   },
 
-  DrillListCardHeaderLintel: {
+  DrillListCardHeaderStiall: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
 
-  DrillListCardBadgeEnclave: {
+  DrillListCardBadgeCrios: {
     borderRadius: 6,
     backgroundColor: colors.cardMuted,
     paddingHorizontal: 9,
     paddingVertical: 3,
   },
-  DrillListCardBadgeFiligree: {
+  DrillListCardBadgeTecs: {
     fontSize: 11,
     lineHeight: 16.5,
     fontWeight: '600',
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     color: colors.accent,
   },
 
-  DrillListCardTitleFiligree: {
+  DrillListCardTitleTecs: {
     marginTop: 10,
     fontSize: 18,
     lineHeight: 23.4,
@@ -108,13 +108,13 @@ const styles = StyleSheet.create({
     color: colors.headingLight,
   },
 
-  DrillListCardDescriptionFiligree: {
+  DrillListCardDescriptionTecs: {
     marginTop: 8,
     fontSize: 13,
     lineHeight: 19.5,
     color: colors.textMuted,
   },
-  DrillListCardMetaLintel: {
+  DrillListCardMetaStiall: {
     marginTop: 14,
     flexDirection: 'row',
     gap: 10,

@@ -22,83 +22,83 @@ import {
 import { colors } from '../theme';
 
 export function BoardScreen() {
-  const insets = useSafeAreaInsets();
+  const imeallacha = useSafeAreaInsets();
 
-  const [available, setAvailable] = useState({ width: 0, height: 0 });
+  const [arFail, socraighArFail] = useState({ width: 0, height: 0 });
 
-  const [resetToken, setResetToken] = useState(0);
+  const [comharthaAth, socraighComharthaAth] = useState(0);
 
-  const handleFieldLayout = useCallback((event: LayoutChangeEvent) => {
-    const { width, height } = event.nativeEvent.layout;
-    setAvailable({ width, height });
+  const laimhsighLeaganPairc = useCallback((imeacht: LayoutChangeEvent) => {
+    const { width, height } = imeacht.nativeEvent.layout;
+    socraighArFail({ width, height });
   }, []);
 
-  const resetBoard = useCallback(() => setResetToken(token => token + 1), []);
+  const athshocraighClar = useCallback(() => socraighComharthaAth(comhartha => comhartha + 1), []);
 
-  const scaleX = available.width / BOARD_DESIGN_WIDTH;
-  const scaleY = available.height / BOARD_DESIGN_HEIGHT;
-  const fieldWidth = available.width;
+  const scalaX = arFail.width / BOARD_DESIGN_WIDTH;
+  const scalaY = arFail.height / BOARD_DESIGN_HEIGHT;
+  const leitheadPairc = arFail.width;
 
-  const fieldHeight = available.height;
-  const chipSize = CHIP_SIZE * scaleX;
+  const airdePairc = arFail.height;
+  const meidSliseog = CHIP_SIZE * scalaX;
 
   return (
-    <View style={[styles.BoardScreenFacetChassis, { paddingTop: insets.top }]}>
-      <Text style={styles.BoardScreenHeadingFiligree}>Tactical Board</Text>
+    <View style={[styles.BoardScreenFramhClud, { paddingTop: imeallacha.top }]}>
+      <Text style={styles.BoardScreenHeadingTecs}>Tactical Board</Text>
 
-      <View style={styles.BoardScreenLegendLintel}>
-        <View style={styles.BoardScreenLegendItemEnclave}>
+      <View style={styles.BoardScreenLegendStiall}>
+        <View style={styles.BoardScreenLegendItemCrios}>
           <View
             style={[
               styles.BoardScreenLegendDot,
               styles.BoardScreenLegendDotOwn,
             ]}
           />
-          <Text style={styles.BoardScreenLegendFiligree}>Your Team</Text>
+          <Text style={styles.BoardScreenLegendTecs}>Your Team</Text>
         </View>
 
-        <View style={styles.BoardScreenLegendItemEnclave}>
+        <View style={styles.BoardScreenLegendItemCrios}>
           <View
             style={[
               styles.BoardScreenLegendDot,
               styles.BoardScreenLegendDotOpponent,
             ]}
           />
-          <Text style={styles.BoardScreenLegendFiligree}>Opponent</Text>
+          <Text style={styles.BoardScreenLegendTecs}>Opponent</Text>
         </View>
 
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Reset board"
           hitSlop={8}
-          onPress={resetBoard}
+          onPress={athshocraighClar}
           style={({ pressed }) => [
-            styles.BoardScreenResetPortico,
-            pressed && styles.BoardScreenResetPorticoPressedDim,
+            styles.BoardScreenResetCnaip,
+            pressed && styles.BoardScreenResetCnaipBruiteCiun,
           ]}
         >
-          <Text style={styles.BoardScreenResetFiligree}>Reset</Text>
+          <Text style={styles.BoardScreenResetTecs}>Reset</Text>
         </Pressable>
       </View>
 
-      <View style={styles.BoardScreenFieldFrame} onLayout={handleFieldLayout}>
-        {scaleX > 0 && (
+      <View style={styles.BoardScreenFieldFrame} onLayout={laimhsighLeaganPairc}>
+        {scalaX > 0 && (
           <View
             style={[
-              styles.BoardScreenFieldEnclave,
-              { width: fieldWidth, height: fieldHeight },
+              styles.BoardScreenFieldCrios,
+              { width: leitheadPairc, height: airdePairc },
             ]}
           >
-            <FieldMarkings scaleX={scaleX} scaleY={scaleY} />
-            {boardChips.map(chip => (
+            <FieldMarkings scalaX={scalaX} scalaY={scalaY} />
+            {boardChips.map(sliseog => (
               <BoardChip
-                key={`${chip.id}-${resetToken}-${fieldWidth}`}
-                team={chip.team}
-                startX={chip.x * scaleX}
-                startY={chip.y * scaleY}
-                size={chipSize}
-                fieldWidth={fieldWidth}
-                fieldHeight={fieldHeight}
+                key={`${sliseog.id}-${comharthaAth}-${leitheadPairc}`}
+                foireann={sliseog.foireann}
+                tosachX={sliseog.x * scalaX}
+                tosachY={sliseog.y * scalaY}
+                meid={meidSliseog}
+                leitheadPairc={leitheadPairc}
+                airdePairc={airdePairc}
               />
             ))}
           </View>
@@ -109,13 +109,13 @@ export function BoardScreen() {
 }
 
 const styles = StyleSheet.create({
-  BoardScreenFacetChassis: {
+  BoardScreenFramhClud: {
     flex: 1,
     backgroundColor: colors.background,
     paddingHorizontal: 16,
   },
 
-  BoardScreenHeadingFiligree: {
+  BoardScreenHeadingTecs: {
     marginTop: 24,
     fontSize: 22,
     lineHeight: 26.4,
@@ -123,13 +123,13 @@ const styles = StyleSheet.create({
     color: colors.headingLight,
   },
 
-  BoardScreenLegendLintel: {
+  BoardScreenLegendStiall: {
     marginTop: 14,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 22,
   },
-  BoardScreenLegendItemEnclave: {
+  BoardScreenLegendItemCrios: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
@@ -147,23 +147,23 @@ const styles = StyleSheet.create({
     backgroundColor: colors.opponent,
   },
 
-  BoardScreenLegendFiligree: {
+  BoardScreenLegendTecs: {
     fontSize: 12,
     lineHeight: 18,
     color: colors.textMuted,
   },
 
-  BoardScreenResetPortico: {
+  BoardScreenResetCnaip: {
     marginLeft: 'auto',
     borderRadius: 8,
     backgroundColor: colors.cardMuted,
     paddingHorizontal: 12,
     paddingVertical: 4,
   },
-  BoardScreenResetPorticoPressedDim: {
+  BoardScreenResetCnaipBruiteCiun: {
     opacity: 0.7,
   },
-  BoardScreenResetFiligree: {
+  BoardScreenResetTecs: {
     fontSize: 12,
     lineHeight: 18,
     fontWeight: '600',
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  BoardScreenFieldEnclave: {
+  BoardScreenFieldCrios: {
     borderRadius: 10,
     backgroundColor: colors.card,
     overflow: 'hidden',

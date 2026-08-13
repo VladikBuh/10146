@@ -3,21 +3,21 @@ import { StyleSheet, Text, View } from 'react-native';
 import { colors } from '../theme';
 
 type MetaChipProps = {
-  label: string;
-  value: string;
+  lipead: string;
+  luach: string;
 };
 
-export function MetaChip({ label, value }: MetaChipProps) {
+export function MetaChip({ lipead, luach }: MetaChipProps) {
   return (
-    <View style={styles.MetaChipFacetChassis}>
-      <Text style={styles.MetaChipLabelFiligree}>{label}</Text>
-      <Text style={styles.MetaChipValueFiligree}>{value}</Text>
+    <View style={styles.MetaChipFramhClud}>
+      <Text style={styles.MetaChipLabelTecs}>{lipead}</Text>
+      <Text style={styles.MetaChipValueTecs}>{luach}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  MetaChipFacetChassis: {
+  MetaChipFramhClud: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 5,
@@ -27,13 +27,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.cardMuted,
   },
 
-  MetaChipLabelFiligree: {
+  MetaChipLabelTecs: {
     fontSize: 11,
     lineHeight: 16.5,
     color: colors.textFaint,
   },
 
-  MetaChipValueFiligree: {
+  MetaChipValueTecs: {
     fontSize: 12,
     lineHeight: 18,
     fontWeight: '600',

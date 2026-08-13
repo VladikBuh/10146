@@ -7,64 +7,64 @@ import { CHIP_SIZE, type BoardTeam } from '../../data/tacticalBoard';
 import { colors } from '../../theme';
 
 type BoardChipProps = {
-  team: BoardTeam;
-  startX: number;
-  startY: number;
-  size: number;
-  fieldWidth: number;
-  fieldHeight: number;
+  foireann: BoardTeam;
+  tosachX: number;
+  tosachY: number;
+  meid: number;
+  leitheadPairc: number;
+  airdePairc: number;
 };
 
-const clamp = (value: number, max: number) => Math.min(Math.max(value, 0), max);
+const teoraigh = (luach: number, uasmheid: number) => Math.min(Math.max(luach, 0), uasmheid);
 
 export function BoardChip({
-  team,
-  startX,
-  startY,
-  size,
-  fieldWidth,
-  fieldHeight,
+  foireann,
+  tosachX,
+  tosachY,
+  meid,
+  leitheadPairc,
+  airdePairc,
 }: BoardChipProps) {
-  const position = useRef(
-    new Animated.ValueXY({ x: startX, y: startY }),
+  const suiomh = useRef(
+    new Animated.ValueXY({ x: tosachX, y: tosachY }),
   ).current;
 
-  const dragOrigin = useRef({ x: startX, y: startY });
-  const settled = useRef({ x: startX, y: startY });
+  const bunTarraingt = useRef({ x: tosachX, y: tosachY });
+  const socraithe = useRef({ x: tosachX, y: tosachY });
 
-  const panResponder = useMemo(
+  const freagroiPan = useMemo(
     () =>
       PanResponder.create({
         onStartShouldSetPanResponder: () => true,
         onMoveShouldSetPanResponder: () => true,
         onPanResponderGrant: () => {
-          dragOrigin.current = settled.current;
+          bunTarraingt.current = socraithe.current;
         },
-        onPanResponderMove: (_event, gesture) => {
-          const next = {
-            x: clamp(dragOrigin.current.x + gesture.dx, fieldWidth - size),
-            y: clamp(dragOrigin.current.y + gesture.dy, fieldHeight - size),
+        onPanResponderMove: (_event, gotha) => {
+          const seo = {
+            x: teoraigh(bunTarraingt.current.x + gotha.dx, leitheadPairc - meid),
+            y: teoraigh(bunTarraingt.current.y + gotha.dy, airdePairc - meid),
           };
-          settled.current = next;
-          position.setValue(next);
+          socraithe.current = seo;
+          suiomh.setValue(seo);
         },
       }),
-    [position, fieldWidth, fieldHeight, size],
+    [suiomh, leitheadPairc, airdePairc, meid],
   );
 
   return (
     <Animated.View
-      {...panResponder.panHandlers}
+      {...freagroiPan.panHandlers}
       style={[
-        styles.BoardChipFacetChassis,
-        team === 'own'
-          ? styles.BoardChipFacetChassisOwn
-          : styles.BoardChipFacetChassisOpponent,
+        styles.BoardChipFramhClud,
+        foireann === 'own'
+          ? styles.BoardChipFramhCludOwn
+          : styles.BoardChipFramhCludOpponent,
         {
-          width: size,
-          height: size,
-          borderRadius: size / 2,
-          transform: position.getTranslateTransform(),
+          width: meid,
+          height: meid,
+          borderRadius: meid / 2,
+          transform: suiomh.getTranslateTransform(),
         },
       ]}
     />
@@ -72,7 +72,7 @@ export function BoardChip({
 }
 
 const styles = StyleSheet.create({
-  BoardChipFacetChassis: {
+  BoardChipFramhClud: {
     position: 'absolute',
     left: 0,
     top: 0,
@@ -81,12 +81,12 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
 
-  BoardChipFacetChassisOwn: {
+  BoardChipFramhCludOwn: {
     backgroundColor: colors.accent,
     borderColor: 'rgba(255, 255, 255, 0.25)',
   },
 
-  BoardChipFacetChassisOpponent: {
+  BoardChipFramhCludOpponent: {
     backgroundColor: colors.opponent,
     borderColor: 'rgba(255, 255, 255, 0.18)',
   },

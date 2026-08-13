@@ -12,7 +12,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { MetaChip } from '../components/MetaChip';
 
 import { ShareButton } from '../components/ShareButton';
-import { buildDrillShareMessage, drills } from '../data/drills';
+import { buildDrillShareMessage, cleachtai } from '../data/drills';
 
 import type { DrillsStackParamList } from '../navigation/types';
 
@@ -27,70 +27,70 @@ export function DrillDetailScreen({
   route,
   navigation,
 }: DrillDetailScreenProps) {
-  const insets = useSafeAreaInsets();
+  const imeallacha = useSafeAreaInsets();
 
-  const drill = drills.find(item => item.id === route.params.drillId);
+  const cleachtadh = cleachtai.find(item => item.id === route.params.drillId);
 
-  if (!drill) {
-    return <View style={styles.DrillDetailScreenFacetChassis} />;
+  if (!cleachtadh) {
+    return <View style={styles.DrillDetailScreenFramhClud} />;
   }
 
   return (
-    <View style={styles.DrillDetailScreenFacetChassis}>
+    <View style={styles.DrillDetailScreenFramhClud}>
       <ScrollView
         contentContainerStyle={[
           styles.DrillDetailScreenScrollContent,
-          { paddingTop: insets.top },
+          { paddingTop: imeallacha.top },
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.DrillDetailScreenHeaderLintel}>
+        <View style={styles.DrillDetailScreenHeaderStiall}>
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Go back"
             hitSlop={12}
             onPress={navigation.goBack}
             style={({ pressed }) => [
-              styles.DrillDetailScreenBackPortico,
-              pressed && styles.DrillDetailScreenBackPressedDim,
+              styles.DrillDetailScreenBackCnaip,
+              pressed && styles.DrillDetailScreenBackBruiteCiun,
             ]}
           >
             <Image
-              source={require('../assets/tactical-formations-back.png')}
-              style={styles.DrillDetailScreenBackSigil}
+              source={require('../assets/sprintto-drrbl-back.png')}
+              style={styles.DrillDetailScreenBackMarc}
             />
           </Pressable>
-          <Text style={styles.DrillDetailScreenTitleFiligree} numberOfLines={2}>
-            {drill.title}
+          <Text style={styles.DrillDetailScreenTitleTecs} numberOfLines={2}>
+            {cleachtadh.teideal}
           </Text>
         </View>
 
-        <View style={styles.DrillDetailScreenCoverEnclave}>
+        <View style={styles.DrillDetailScreenCoverCrios}>
           <Image
-            source={drill.image}
-            style={styles.DrillDetailScreenCoverSigil}
+            source={cleachtadh.iomha}
+            style={styles.DrillDetailScreenCoverMarc}
             resizeMode="cover"
           />
         </View>
 
-        <View style={styles.DrillDetailScreenMetaLintel}>
-          <MetaChip label="Duration" value={drill.duration} />
-          <MetaChip label="Difficulty" value={drill.difficulty} />
+        <View style={styles.DrillDetailScreenMetaStiall}>
+          <MetaChip lipead="Duration" luach={cleachtadh.fad} />
+          <MetaChip lipead="Difficulty" luach={cleachtadh.difficulty} />
           <ShareButton
-            title={drill.title}
-            message={buildDrillShareMessage(drill)}
-            style={styles.DrillDetailScreenSharePortico}
+            teideal={cleachtadh.teideal}
+            message={buildDrillShareMessage(cleachtadh)}
+            style={styles.DrillDetailScreenShareCnaip}
           />
         </View>
 
-        <View style={styles.DrillDetailScreenBodyEnclave}>
-          <Text style={styles.DrillDetailScreenParagraphFiligree}>
-            Short description: {drill.shortDescription}.
+        <View style={styles.DrillDetailScreenBodyCrios}>
+          <Text style={styles.DrillDetailScreenParagraphTecs}>
+            Short description: {cleachtadh.shortDescription}.
           </Text>
-          {drill.paragraphs.map(paragraph => (
+          {cleachtadh.paragraphs.map(paragraph => (
             <Text
               key={paragraph.slice(0, 32)}
-              style={styles.DrillDetailScreenParagraphFiligree}
+              style={styles.DrillDetailScreenParagraphTecs}
             >
               {paragraph}
             </Text>
@@ -102,7 +102,7 @@ export function DrillDetailScreen({
 }
 
 const styles = StyleSheet.create({
-  DrillDetailScreenFacetChassis: {
+  DrillDetailScreenFramhClud: {
     flex: 1,
     backgroundColor: colors.background,
   },
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
   },
 
-  DrillDetailScreenHeaderLintel: {
+  DrillDetailScreenHeaderStiall: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 14,
@@ -119,23 +119,23 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
 
-  DrillDetailScreenBackPortico: {
+  DrillDetailScreenBackCnaip: {
     width: 24,
     height: 24,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  DrillDetailScreenBackPressedDim: {
+  DrillDetailScreenBackBruiteCiun: {
     opacity: 0.6,
   },
-  DrillDetailScreenBackSigil: {
+  DrillDetailScreenBackMarc: {
     width: 15,
     height: 16,
     tintColor: colors.headingLight,
     transform: [{ rotate: '-90deg' }],
   },
 
-  DrillDetailScreenTitleFiligree: {
+  DrillDetailScreenTitleTecs: {
     flex: 1,
     fontSize: 22,
     lineHeight: 33,
@@ -143,16 +143,16 @@ const styles = StyleSheet.create({
     color: colors.headingLight,
   },
 
-  DrillDetailScreenCoverEnclave: {
+  DrillDetailScreenCoverCrios: {
     height: 196,
     backgroundColor: colors.imagePlaceholder,
   },
 
-  DrillDetailScreenCoverSigil: {
+  DrillDetailScreenCoverMarc: {
     width: '100%',
     height: '100%',
   },
-  DrillDetailScreenMetaLintel: {
+  DrillDetailScreenMetaStiall: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
@@ -160,16 +160,16 @@ const styles = StyleSheet.create({
     paddingTop: 14,
   },
 
-  DrillDetailScreenSharePortico: {
+  DrillDetailScreenShareCnaip: {
     width: 71,
     height: 28,
   },
 
-  DrillDetailScreenBodyEnclave: {
+  DrillDetailScreenBodyCrios: {
     paddingHorizontal: 21,
     paddingTop: 14,
   },
-  DrillDetailScreenParagraphFiligree: {
+  DrillDetailScreenParagraphTecs: {
     fontSize: 13,
     lineHeight: 22.75,
     color: colors.bodyWarm,

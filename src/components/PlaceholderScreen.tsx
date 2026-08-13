@@ -4,29 +4,29 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors } from '../theme';
 
 type PlaceholderScreenProps = {
-  title: string;
+  teideal: string;
 };
 
-export function PlaceholderScreen({ title }: PlaceholderScreenProps) {
-  const insets = useSafeAreaInsets();
+export function PlaceholderScreen({ teideal }: PlaceholderScreenProps) {
+  const imeallacha = useSafeAreaInsets();
 
   return (
     <View
-      style={[styles.PlaceholderScreenFacetChassis, { paddingTop: insets.top }]}
+      style={[styles.PlaceholderScreenFramhClud, { paddingTop: imeallacha.top }]}
     >
-      <Text style={styles.PlaceholderScreenTitleFiligree}>{title}</Text>
+      <Text style={styles.PlaceholderScreenTitleTecs}>{teideal}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  PlaceholderScreenFacetChassis: {
+  PlaceholderScreenFramhClud: {
     flex: 1,
     backgroundColor: colors.background,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  PlaceholderScreenTitleFiligree: {
+  PlaceholderScreenTitleTecs: {
     fontSize: 22,
     lineHeight: 26.4,
     fontWeight: '700',

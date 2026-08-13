@@ -25,15 +25,15 @@ const BUTTON_LABELS: Record<TimerStatus, string> = {
   finished: 'New Match',
 };
 
-const periodSeconds = (index: number) => matchPeriods[index].minutes * 60;
+const periodSeconds = (innecs: number) => matchPeriods[innecs].noimeid * 60;
 
 export function TimerScreen() {
-  const insets = useSafeAreaInsets();
+  const imeallacha = useSafeAreaInsets();
 
   const [status, setStatus] = useState<TimerStatus>('idle');
   const [periodIndex, setPeriodIndex] = useState(0);
 
-  const [remaining, setRemaining] = useState(() => periodSeconds(0));
+  const [fanta, socraighFanta] = useState(() => periodSeconds(0));
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const stopInterval = useCallback(() => {
@@ -50,9 +50,9 @@ export function TimerScreen() {
     }
 
     intervalRef.current = setInterval(() => {
-      setRemaining(current => {
-        if (current > 1) {
-          return current - 1;
+      socraighFanta(reathe => {
+        if (reathe > 1) {
+          return reathe - 1;
         }
 
         const nextIndex = periodIndex + 1;
@@ -69,14 +69,14 @@ export function TimerScreen() {
     return stopInterval;
   }, [status, periodIndex, stopInterval]);
 
-  const handlePress = useCallback(() => {
-    setStatus(current => {
-      if (current === 'running') {
+  const laimhsighBru = useCallback(() => {
+    setStatus(reathe => {
+      if (reathe === 'running') {
         return 'paused';
       }
-      if (current === 'finished') {
+      if (reathe === 'finished') {
         setPeriodIndex(0);
-        setRemaining(periodSeconds(0));
+        socraighFanta(periodSeconds(0));
         return 'idle';
       }
       return 'running';
@@ -90,56 +90,56 @@ export function TimerScreen() {
       : null;
 
   return (
-    <View style={styles.TimerScreenFacetChassis}>
+    <View style={styles.TimerScreenFramhClud}>
       <ScrollView
         contentContainerStyle={[
           styles.TimerScreenScrollContent,
-          { paddingTop: insets.top + 24 },
+          { paddingTop: imeallacha.top + 24 },
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.TimerScreenHeadingFiligree}>Game Timer</Text>
+        <Text style={styles.TimerScreenHeadingTecs}>Game Timer</Text>
 
-        <View style={styles.TimerScreenStopwatchEnclave}>
+        <View style={styles.TimerScreenStopwatchCrios}>
           <Image
-            source={require('../assets/tactical-formations-stopwatch.png')}
-            style={styles.TimerScreenStopwatchSigil}
+            source={require('../assets/sprintto-drrbl-stopwatch.png')}
+            style={styles.TimerScreenStopwatchMarc}
             resizeMode="contain"
           />
         </View>
 
-        <View style={styles.TimerScreenClockEnclave}>
+        <View style={styles.TimerScreenClockCrios}>
           {isFinished ? (
-            <Text style={styles.TimerScreenFinishedFiligree}>
+            <Text style={styles.TimerScreenFinishedTecs}>
               Match Finished
             </Text>
           ) : (
-            <Text style={styles.TimerScreenClockFiligree}>
-              {formatClock(remaining)}
+            <Text style={styles.TimerScreenClockTecs}>
+              {formatClock(fanta)}
             </Text>
           )}
         </View>
 
-        <View style={styles.TimerScreenPeriodsEnclave}>
-          {matchPeriods.map((period, index) => (
+        <View style={styles.TimerScreenPeriodsCrios}>
+          {matchPeriods.map((treimhse, innecs) => (
             <PeriodRow
-              key={period.id}
-              period={period}
-              isActive={period.id === activePeriodId}
-              isLast={index === matchPeriods.length - 1}
+              key={treimhse.id}
+              treimhse={treimhse}
+              taGniomhach={treimhse.id === activePeriodId}
+              isLast={innecs === matchPeriods.length - 1}
             />
           ))}
         </View>
 
         <Pressable
           accessibilityRole="button"
-          onPress={handlePress}
+          onPress={laimhsighBru}
           style={({ pressed }) => [
-            styles.TimerScreenPortico,
-            pressed && styles.TimerScreenPorticoPressedDim,
+            styles.TimerScreenCnaip,
+            pressed && styles.TimerScreenCnaipBruiteCiun,
           ]}
         >
-          <Text style={styles.TimerScreenPorticoFiligree}>
+          <Text style={styles.TimerScreenCnaipTecs}>
             {BUTTON_LABELS[status]}
           </Text>
         </Pressable>
@@ -149,7 +149,7 @@ export function TimerScreen() {
 }
 
 const styles = StyleSheet.create({
-  TimerScreenFacetChassis: {
+  TimerScreenFramhClud: {
     flex: 1,
     backgroundColor: colors.background,
   },
@@ -158,14 +158,14 @@ const styles = StyleSheet.create({
     paddingBottom: 28,
   },
 
-  TimerScreenHeadingFiligree: {
+  TimerScreenHeadingTecs: {
     fontSize: 22,
     lineHeight: 26.4,
     fontWeight: '700',
     color: colors.headingLight,
   },
 
-  TimerScreenStopwatchEnclave: {
+  TimerScreenStopwatchCrios: {
     marginTop: 18,
     height: 222,
     borderRadius: 10,
@@ -173,17 +173,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  TimerScreenStopwatchSigil: {
+  TimerScreenStopwatchMarc: {
     width: 161,
     height: 209,
   },
-  TimerScreenClockEnclave: {
+  TimerScreenClockCrios: {
     height: 100,
     alignItems: 'center',
     justifyContent: 'center',
   },
 
-  TimerScreenClockFiligree: {
+  TimerScreenClockTecs: {
     fontSize: 72,
     lineHeight: 84,
     fontWeight: '700',
@@ -192,20 +192,20 @@ const styles = StyleSheet.create({
     color: colors.headingLight,
   },
 
-  TimerScreenFinishedFiligree: {
+  TimerScreenFinishedTecs: {
     fontSize: 34,
     lineHeight: 44,
     fontWeight: '700',
     textAlign: 'center',
     color: colors.headingLight,
   },
-  TimerScreenPeriodsEnclave: {
+  TimerScreenPeriodsCrios: {
     borderRadius: 10,
     backgroundColor: colors.cardMuted,
     overflow: 'hidden',
   },
 
-  TimerScreenPortico: {
+  TimerScreenCnaip: {
     marginTop: 22,
     height: 52,
     borderRadius: 12,
@@ -214,10 +214,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  TimerScreenPorticoPressedDim: {
+  TimerScreenCnaipBruiteCiun: {
     opacity: 0.85,
   },
-  TimerScreenPorticoFiligree: {
+  TimerScreenCnaipTecs: {
     fontSize: 16,
     lineHeight: 24,
     letterSpacing: 0.3,

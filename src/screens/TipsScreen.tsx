@@ -4,25 +4,25 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { TipCard } from '../components/tips/TipCard';
 
-import { tips } from '../data/tips';
+import { leidanna } from '../data/tips';
 
 import { colors } from '../theme';
 
 export function TipsScreen() {
-  const insets = useSafeAreaInsets();
+  const imeallacha = useSafeAreaInsets();
 
   return (
-    <View style={styles.TipsScreenFacetChassis}>
+    <View style={styles.TipsScreenFramhClud}>
       <ScrollView
         contentContainerStyle={[
           styles.TipsScreenScrollContent,
-          { paddingTop: insets.top + 24 },
+          { paddingTop: imeallacha.top + 24 },
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.TipsScreenHeadingFiligree}>5v5 Tip</Text>
-        {tips.map(tip => (
-          <TipCard key={tip.id} tip={tip} />
+        <Text style={styles.TipsScreenHeadingTecs}>5v5 Tip</Text>
+        {leidanna.map(leid => (
+          <TipCard key={leid.id} leid={leid} />
         ))}
       </ScrollView>
     </View>
@@ -30,7 +30,7 @@ export function TipsScreen() {
 }
 
 const styles = StyleSheet.create({
-  TipsScreenFacetChassis: {
+  TipsScreenFramhClud: {
     flex: 1,
     backgroundColor: colors.background,
   },
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     gap: 20,
   },
 
-  TipsScreenHeadingFiligree: {
+  TipsScreenHeadingTecs: {
     fontSize: 22,
     lineHeight: 26.4,
     fontWeight: '700',

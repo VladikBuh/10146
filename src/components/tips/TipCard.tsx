@@ -6,50 +6,50 @@ import { colors } from '../../theme';
 import { ShareButton } from '../ShareButton';
 
 type TipCardProps = {
-  tip: Tip;
+  leid: Tip;
 };
 
-export function TipCard({ tip }: TipCardProps) {
+export function TipCard({ leid }: TipCardProps) {
   return (
-    <View style={styles.TipCardFacetChassis}>
-      <View style={styles.TipCardHeaderLintel}>
-        <View style={styles.TipCardBadgeEnclave}>
-          <Text style={styles.TipCardBadgeFiligree}>{tip.category}</Text>
+    <View style={styles.TipCardFramhClud}>
+      <View style={styles.TipCardHeaderStiall}>
+        <View style={styles.TipCardBadgeCrios}>
+          <Text style={styles.TipCardBadgeTecs}>{leid.category}</Text>
         </View>
         <ShareButton
-          title={tip.title}
-          message={`${tip.title} (${tip.category})\n\n${tip.description}`}
+          teideal={leid.teideal}
+          message={`${leid.teideal} (${leid.category})\n\n${leid.curSios}`}
         />
       </View>
 
-      <Text style={styles.TipCardTitleFiligree}>{tip.title}</Text>
+      <Text style={styles.TipCardTitleTecs}>{leid.teideal}</Text>
       <View style={styles.TipCardDivider} />
-      <Text style={styles.TipCardDescriptionFiligree}>{tip.description}</Text>
+      <Text style={styles.TipCardDescriptionTecs}>{leid.curSios}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  TipCardFacetChassis: {
+  TipCardFramhClud: {
     borderRadius: 12,
     backgroundColor: colors.card,
     paddingHorizontal: 20,
     paddingVertical: 22,
   },
 
-  TipCardHeaderLintel: {
+  TipCardHeaderStiall: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  TipCardBadgeEnclave: {
+  TipCardBadgeCrios: {
     borderRadius: 6,
     backgroundColor: colors.cardMuted,
     paddingHorizontal: 10,
     paddingVertical: 4,
   },
 
-  TipCardBadgeFiligree: {
+  TipCardBadgeTecs: {
     fontSize: 10,
     lineHeight: 15,
     fontWeight: '700',
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     color: colors.accent,
   },
 
-  TipCardTitleFiligree: {
+  TipCardTitleTecs: {
     marginTop: 14,
     fontSize: 20,
     lineHeight: 26,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
 
-  TipCardDescriptionFiligree: {
+  TipCardDescriptionTecs: {
     marginTop: 14,
     fontSize: 14,
     lineHeight: 23.1,

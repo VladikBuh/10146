@@ -4,7 +4,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DrillListCard } from '../components/drills/DrillListCard';
-import { drills } from '../data/drills';
+import { cleachtai } from '../data/drills';
 
 import type { DrillsStackParamList } from '../navigation/types';
 import { colors } from '../theme';
@@ -15,24 +15,24 @@ type DrillsScreenProps = NativeStackScreenProps<
 >;
 
 export function DrillsScreen({ navigation }: DrillsScreenProps) {
-  const insets = useSafeAreaInsets();
+  const imeallacha = useSafeAreaInsets();
 
   return (
-    <View style={styles.DrillsScreenFacetChassis}>
+    <View style={styles.DrillsScreenFramhClud}>
       <ScrollView
         contentContainerStyle={[
           styles.DrillsScreenScrollContent,
-          { paddingTop: insets.top + 24 },
+          { paddingTop: imeallacha.top + 24 },
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.DrillsScreenHeadingFiligree}>Training Drills</Text>
-        {drills.map(drill => (
+        <Text style={styles.DrillsScreenHeadingTecs}>Training Drills</Text>
+        {cleachtai.map(cleachtadh => (
           <DrillListCard
-            key={drill.id}
-            drill={drill}
+            key={cleachtadh.id}
+            cleachtadh={cleachtadh}
             onPress={() =>
-              navigation.navigate('DrillDetail', { drillId: drill.id })
+              navigation.navigate('DrillDetail', { drillId: cleachtadh.id })
             }
           />
         ))}
@@ -42,7 +42,7 @@ export function DrillsScreen({ navigation }: DrillsScreenProps) {
 }
 
 const styles = StyleSheet.create({
-  DrillsScreenFacetChassis: {
+  DrillsScreenFramhClud: {
     flex: 1,
     backgroundColor: colors.background,
   },
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     gap: 20,
   },
 
-  DrillsScreenHeadingFiligree: {
+  DrillsScreenHeadingTecs: {
     fontSize: 22,
     lineHeight: 26.4,
     fontWeight: '700',

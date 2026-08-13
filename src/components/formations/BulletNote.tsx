@@ -3,32 +3,32 @@ import { StyleSheet, Text, View } from 'react-native';
 import { colors } from '../../theme';
 
 type BulletNoteProps = {
-  label: string;
+  lipead: string;
   text: string;
   tone: 'positive' | 'negative';
 };
 
-export function BulletNote({ label, text, tone }: BulletNoteProps) {
+export function BulletNote({ lipead, text, tone }: BulletNoteProps) {
   return (
     <View>
-      <Text style={styles.BulletNoteLabelFiligree}>{label}</Text>
-      <View style={styles.BulletNoteBodyLintel}>
+      <Text style={styles.BulletNoteLabelTecs}>{lipead}</Text>
+      <View style={styles.BulletNoteBodyStiall}>
         <Text
           style={[
-            styles.BulletNoteDotFiligree,
-            tone === 'negative' && styles.BulletNoteDotFiligreeNegative,
+            styles.BulletNoteDotTecs,
+            tone === 'negative' && styles.BulletNoteDotTecsNegative,
           ]}
         >
           •
         </Text>
-        <Text style={styles.BulletNoteTextFiligree}>{text}</Text>
+        <Text style={styles.BulletNoteTextTecs}>{text}</Text>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  BulletNoteLabelFiligree: {
+  BulletNoteLabelTecs: {
     fontSize: 11,
     lineHeight: 16.5,
     fontWeight: '700',
@@ -37,23 +37,23 @@ const styles = StyleSheet.create({
     color: colors.accent,
   },
 
-  BulletNoteBodyLintel: {
+  BulletNoteBodyStiall: {
     marginTop: 10,
     flexDirection: 'row',
     gap: 10,
   },
 
-  BulletNoteDotFiligree: {
+  BulletNoteDotTecs: {
     width: 8,
     fontSize: 14,
     lineHeight: 21,
     color: colors.accent,
   },
-  BulletNoteDotFiligreeNegative: {
+  BulletNoteDotTecsNegative: {
     color: colors.textFaint,
   },
 
-  BulletNoteTextFiligree: {
+  BulletNoteTextTecs: {
     flex: 1,
     fontSize: 14,
     lineHeight: 20.3,

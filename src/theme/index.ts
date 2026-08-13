@@ -22,14 +22,14 @@ export const colors = {
 };
 
 export const typography = {
-  title: {
+  teideal: {
     fontSize: 32,
     lineHeight: 44,
     letterSpacing: -0.5,
     fontWeight: '700' as const,
     color: colors.textPrimary,
   },
-  body: {
+  corp: {
     fontSize: 15,
     lineHeight: 24.75,
     fontWeight: '400' as const,

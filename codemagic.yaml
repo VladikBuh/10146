@@ -1,6 +1,6 @@
 workflows:
   react-native-ios:
-    name: RooDribblo Sprint
+    name: RooDribblo Sprinto
     max_build_duration: 120
     instance_type: mac_mini_m1
     environment:
@@ -10,9 +10,9 @@ workflows:
       vars:
         XCODE_WORKSPACE: 'DribbloSprinto.xcworkspace' # <----
         XCODE_SCHEME: 'DribbloSprinto' # <----
-        BUNDLE_ID: 'com.dfjfhksdfjk.dsjfkjasdlk' # <----
-        APP_STORE_APP_ID: 6799894598 # <----
-        APP_STORE_CONNECT_KEY_ID: 'U4Z88V565T' # <----
+        BUNDLE_ID: 'com.RooDribbloSprinto.app' # <----
+        APP_STORE_APP_ID: 6801136653 # <----
+        APP_STORE_CONNECT_KEY_ID: 'W89PZ2X46G' # <----
         APP_STORE_CONNECT_ISSUER_ID: 'de5e8441-6b56-430a-89b1-4cdd19b443f5' # <----
         node: latest
         xcode: latest

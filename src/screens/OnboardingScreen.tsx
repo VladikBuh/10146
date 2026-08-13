@@ -26,13 +26,13 @@ type OnboardingScreenProps = NativeStackScreenProps<
 >;
 
 export function OnboardingScreen({ navigation }: OnboardingScreenProps) {
-  const insets = useSafeAreaInsets();
+  const imeallacha = useSafeAreaInsets();
 
   const [stepIndex, setStepIndex] = useState(0);
 
   const fade = useRef(new Animated.Value(1)).current;
 
-  const step = onboardingSteps[stepIndex];
+  const ceim = onboardingSteps[stepIndex];
 
   const isLastStep = stepIndex === onboardingSteps.length - 1;
 
@@ -46,61 +46,61 @@ export function OnboardingScreen({ navigation }: OnboardingScreenProps) {
     }).start();
   }, [stepIndex, fade]);
 
-  const handleNext = useCallback(() => {
+  const laimhsighSeo = useCallback(() => {
     if (isLastStep) {
       navigation.replace('Main', { screen: 'FormationsTab' });
       return;
     }
-    setStepIndex(current => current + 1);
+    setStepIndex(reathe => reathe + 1);
   }, [isLastStep, navigation]);
 
   return (
-    <View style={[styles.OnboardingScreenFacetChassis]}>
+    <View style={[styles.OnboardingScreenFramhClud]}>
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
-          paddingTop: insets.top,
+          paddingTop: imeallacha.top,
           paddingHorizontal: 16,
         }}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.OnboardingScreenDotsLintel}>
-          <StepDots count={onboardingSteps.length} activeIndex={stepIndex} />
+        <View style={styles.OnboardingScreenDotsStiall}>
+          <StepDots comhaireamh={onboardingSteps.length} innecsGniomhach={stepIndex} />
         </View>
 
         <Animated.View
-          style={[styles.OnboardingScreenContentEnclave, { opacity: fade }]}
+          style={[styles.OnboardingScreenContentCrios, { opacity: fade }]}
         >
-          <View style={styles.OnboardingScreenImageEnclave}>
+          <View style={styles.OnboardingScreenImageCrios}>
             <Image
-              source={step.image}
-              style={styles.OnboardingScreenImageSigil}
+              source={ceim.iomha}
+              style={styles.OnboardingScreenImageMarc}
               resizeMode="contain"
             />
           </View>
 
-          <Text style={styles.OnboardingScreenTitleFiligree}>{step.title}</Text>
-          <Text style={styles.OnboardingScreenDescriptionFiligree}>
-            {step.description}
+          <Text style={styles.OnboardingScreenTitleTecs}>{ceim.teideal}</Text>
+          <Text style={styles.OnboardingScreenDescriptionTecs}>
+            {ceim.curSios}
           </Text>
         </Animated.View>
 
         <View
           style={[
-            styles.OnboardingScreenActionsLintel,
-            { paddingBottom: insets.bottom + 20 },
+            styles.OnboardingScreenActionsStiall,
+            { paddingBottom: imeallacha.bottom + 20 },
           ]}
         >
           <Pressable
             accessibilityRole="button"
-            onPress={handleNext}
+            onPress={laimhsighSeo}
             style={({ pressed }) => [
-              styles.OnboardingScreenPortico,
-              pressed && styles.OnboardingScreenPorticoPressedDim,
+              styles.OnboardingScreenCnaip,
+              pressed && styles.OnboardingScreenCnaipBruiteCiun,
             ]}
           >
-            <Text style={styles.OnboardingScreenPorticoFiligree}>
-              {step.buttonLabel}
+            <Text style={styles.OnboardingScreenCnaipTecs}>
+              {ceim.buttonLabel}
             </Text>
           </Pressable>
         </View>
@@ -110,54 +110,54 @@ export function OnboardingScreen({ navigation }: OnboardingScreenProps) {
 }
 
 const styles = StyleSheet.create({
-  OnboardingScreenFacetChassis: {
+  OnboardingScreenFramhClud: {
     flex: 1,
     backgroundColor: colors.background,
   },
-  OnboardingScreenDotsLintel: {
+  OnboardingScreenDotsStiall: {
     paddingTop: 28,
     paddingBottom: 12,
   },
 
-  OnboardingScreenContentEnclave: {
+  OnboardingScreenContentCrios: {
     flex: 1,
     paddingHorizontal: 23,
   },
 
-  OnboardingScreenImageEnclave: {
+  OnboardingScreenImageCrios: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  OnboardingScreenImageSigil: {
+  OnboardingScreenImageMarc: {
     width: '92%',
     height: '100%',
   },
-  OnboardingScreenTitleFiligree: {
-    ...typography.title,
+  OnboardingScreenTitleTecs: {
+    ...typography.teideal,
     marginBottom: 12,
   },
-  OnboardingScreenDescriptionFiligree: {
-    ...typography.body,
+  OnboardingScreenDescriptionTecs: {
+    ...typography.corp,
   },
 
-  OnboardingScreenActionsLintel: {
+  OnboardingScreenActionsStiall: {
     paddingHorizontal: 18,
     paddingTop: 32,
   },
 
-  OnboardingScreenPortico: {
+  OnboardingScreenCnaip: {
     height: 52,
     borderRadius: 12,
     backgroundColor: colors.accent,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  OnboardingScreenPorticoPressedDim: {
+  OnboardingScreenCnaipBruiteCiun: {
     opacity: 0.85,
   },
 
-  OnboardingScreenPorticoFiligree: {
+  OnboardingScreenCnaipTecs: {
     ...typography.button,
   },
 });

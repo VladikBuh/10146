@@ -14,34 +14,34 @@ export function FormationSwitcher({
   onNext,
 }: FormationSwitcherProps) {
   return (
-    <View style={styles.FormationSwitcherFacetChassis}>
+    <View style={styles.FormationSwitcherFramhClud}>
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Previous formation"
         hitSlop={12}
         onPress={onPrevious}
-        style={({ pressed }) => pressed && styles.FormationSwitcherPressedDim}
+        style={({ pressed }) => pressed && styles.FormationSwitcherBruiteCiun}
       >
-        <Text style={styles.FormationSwitcherArrowFiligree}>‹</Text>
+        <Text style={styles.FormationSwitcherArrowTecs}>‹</Text>
       </Pressable>
 
-      <Text style={styles.FormationSwitcherNameFiligree}>{name}</Text>
+      <Text style={styles.FormationSwitcherNameTecs}>{name}</Text>
 
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Next formation"
         hitSlop={12}
         onPress={onNext}
-        style={({ pressed }) => pressed && styles.FormationSwitcherPressedDim}
+        style={({ pressed }) => pressed && styles.FormationSwitcherBruiteCiun}
       >
-        <Text style={styles.FormationSwitcherArrowFiligree}>›</Text>
+        <Text style={styles.FormationSwitcherArrowTecs}>›</Text>
       </Pressable>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  FormationSwitcherFacetChassis: {
+  FormationSwitcherFramhClud: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -51,19 +51,19 @@ const styles = StyleSheet.create({
     paddingVertical: 11,
   },
 
-  FormationSwitcherArrowFiligree: {
+  FormationSwitcherArrowTecs: {
     fontSize: 22,
     lineHeight: 22,
     color: colors.textMuted,
   },
-  FormationSwitcherNameFiligree: {
+  FormationSwitcherNameTecs: {
     fontSize: 15,
     lineHeight: 22.5,
     fontWeight: '600',
     color: colors.headingLight,
   },
 
-  FormationSwitcherPressedDim: {
+  FormationSwitcherBruiteCiun: {
     opacity: 0.5,
   },
 });

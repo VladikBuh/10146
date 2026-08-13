@@ -15,10 +15,10 @@ const IMAGE_DESIGN_HEIGHT = 370;
 const SCREEN_PADDING = 16;
 
 type FormationPitchProps = {
-  image: ImageSourcePropType;
+  iomha: ImageSourcePropType;
 };
 
-export function FormationPitch({ image }: FormationPitchProps) {
+export function FormationPitch({ iomha }: FormationPitchProps) {
   const { width } = useWindowDimensions();
   const frameWidth = width - SCREEN_PADDING * 2;
   const scale = frameWidth / FRAME_DESIGN_WIDTH;
@@ -26,15 +26,15 @@ export function FormationPitch({ image }: FormationPitchProps) {
   return (
     <View
       style={[
-        styles.FormationPitchFacetChassis,
+        styles.FormationPitchFramhClud,
         { height: FRAME_DESIGN_HEIGHT * scale },
       ]}
     >
       <Image
-        source={image}
+        source={iomha}
         resizeMode="contain"
         style={[
-          styles.FormationPitchSigil,
+          styles.FormationPitchMarc,
           {
             width: IMAGE_DESIGN_WIDTH * scale,
             height: IMAGE_DESIGN_HEIGHT * scale,
@@ -46,7 +46,7 @@ export function FormationPitch({ image }: FormationPitchProps) {
 }
 
 const styles = StyleSheet.create({
-  FormationPitchFacetChassis: {
+  FormationPitchFramhClud: {
     borderRadius: 10,
     backgroundColor: colors.card,
     overflow: 'hidden',
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  FormationPitchSigil: {
+  FormationPitchMarc: {
     transform: [{ rotate: '-90deg' }],
   },
 });

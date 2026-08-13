@@ -4,34 +4,34 @@ import type { MatchPeriod } from '../../data/matchPeriods';
 import { colors } from '../../theme';
 
 type PeriodRowProps = {
-  period: MatchPeriod;
-  isActive: boolean;
+  treimhse: MatchPeriod;
+  taGniomhach: boolean;
   isLast: boolean;
 };
 
-export function PeriodRow({ period, isActive, isLast }: PeriodRowProps) {
+export function PeriodRow({ treimhse, taGniomhach, isLast }: PeriodRowProps) {
   return (
     <View
       style={[
-        styles.PeriodRowFacetChassis,
-        !isLast && styles.PeriodRowFacetChassisDivided,
+        styles.PeriodRowFramhClud,
+        !isLast && styles.PeriodRowFramhCludDivided,
       ]}
     >
       <Text
         style={[
-          styles.PeriodRowLabelFiligree,
-          isActive && styles.PeriodRowLabelFiligreeActive,
+          styles.PeriodRowLabelTecs,
+          taGniomhach && styles.PeriodRowLabelTecsActive,
         ]}
       >
-        {period.label}
+        {treimhse.lipead}
       </Text>
-      <Text style={styles.PeriodRowValueFiligree}>{period.minutes} min</Text>
+      <Text style={styles.PeriodRowValueTecs}>{treimhse.noimeid} iosmheid</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  PeriodRowFacetChassis: {
+  PeriodRowFramhClud: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -40,22 +40,22 @@ const styles = StyleSheet.create({
     paddingBottom: 14,
   },
 
-  PeriodRowFacetChassisDivided: {
+  PeriodRowFramhCludDivided: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: colors.divider,
   },
 
-  PeriodRowLabelFiligree: {
+  PeriodRowLabelTecs: {
     fontSize: 14,
     lineHeight: 21,
     color: colors.textMuted,
   },
 
-  PeriodRowLabelFiligreeActive: {
+  PeriodRowLabelTecsActive: {
     color: colors.accent,
     fontWeight: '600',
   },
-  PeriodRowValueFiligree: {
+  PeriodRowValueTecs: {
     fontSize: 14,
     lineHeight: 21,
     fontWeight: '600',

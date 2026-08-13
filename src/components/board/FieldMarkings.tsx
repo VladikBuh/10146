@@ -3,41 +3,41 @@ import { StyleSheet, View } from 'react-native';
 import { colors } from '../../theme';
 
 type FieldMarkingsProps = {
-  scaleX: number;
-  scaleY: number;
+  scalaX: number;
+  scalaY: number;
 };
 
-export function FieldMarkings({ scaleX, scaleY }: FieldMarkingsProps) {
-  const x = (value: number) => value * scaleX;
+export function FieldMarkings({ scalaX, scalaY }: FieldMarkingsProps) {
+  const x = (luach: number) => luach * scalaX;
 
-  const y = (value: number) => value * scaleY;
+  const y = (luach: number) => luach * scalaY;
 
-  const circleSize = 56 * scaleX;
+  const meidCiorcal = 56 * scalaX;
 
   return (
     <>
       <View
         style={[
-          styles.FieldMarkingsHalfwayLine,
+          styles.FieldMarcingsHalfwayLine,
           { left: x(21.5), top: y(325.5), width: x(315) },
         ]}
       />
       <View
         style={[
-          styles.FieldMarkingsCenterCircle,
+          styles.FieldMarcingsCenterCircle,
           {
-            left: x(179) - circleSize / 2,
-            top: y(326) - circleSize / 2,
-            width: circleSize,
-            height: circleSize,
-            borderRadius: circleSize / 2,
+            left: x(179) - meidCiorcal / 2,
+            top: y(326) - meidCiorcal / 2,
+            width: meidCiorcal,
+            height: meidCiorcal,
+            borderRadius: meidCiorcal / 2,
           },
         ]}
       />
       <View
         style={[
-          styles.FieldMarkingsPenaltyBox,
-          styles.FieldMarkingsPenaltyBoxTop,
+          styles.FieldMarcingsPenaltyBox,
+          styles.FieldMarcingsPenaltyBoxTop,
           {
             left: x(100.23),
             top: y(14.94),
@@ -48,8 +48,8 @@ export function FieldMarkings({ scaleX, scaleY }: FieldMarkingsProps) {
       />
       <View
         style={[
-          styles.FieldMarkingsPenaltyBox,
-          styles.FieldMarkingsPenaltyBoxBottom,
+          styles.FieldMarcingsPenaltyBox,
+          styles.FieldMarcingsPenaltyBoxBottom,
           {
             left: x(100.23),
             top: y(591.34),
@@ -63,33 +63,33 @@ export function FieldMarkings({ scaleX, scaleY }: FieldMarkingsProps) {
 }
 
 const styles = StyleSheet.create({
-  FieldMarkingsHalfwayLine: {
+  FieldMarcingsHalfwayLine: {
     position: 'absolute',
     height: 1,
     backgroundColor: colors.divider,
     opacity: 0.65,
   },
 
-  FieldMarkingsCenterCircle: {
+  FieldMarcingsCenterCircle: {
     position: 'absolute',
     borderWidth: 1,
     borderColor: colors.divider,
     opacity: 0.55,
   },
 
-  FieldMarkingsPenaltyBox: {
+  FieldMarcingsPenaltyBox: {
     position: 'absolute',
     borderWidth: 1,
     borderColor: colors.divider,
     opacity: 0.5,
   },
 
-  FieldMarkingsPenaltyBoxTop: {
+  FieldMarcingsPenaltyBoxTop: {
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
   },
 
-  FieldMarkingsPenaltyBoxBottom: {
+  FieldMarcingsPenaltyBoxBottom: {
     borderTopLeftRadius: 4,
     borderTopRightRadius: 4,
   },

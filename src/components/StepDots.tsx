@@ -3,19 +3,19 @@ import { StyleSheet, View } from 'react-native';
 import { colors } from '../theme';
 
 type StepDotsProps = {
-  count: number;
-  activeIndex: number;
+  comhaireamh: number;
+  innecsGniomhach: number;
 };
 
-export function StepDots({ count, activeIndex }: StepDotsProps) {
+export function StepDots({ comhaireamh, innecsGniomhach }: StepDotsProps) {
   return (
-    <View style={styles.StepDotsLintel}>
-      {Array.from({ length: count }, (_, index) => (
+    <View style={styles.StepDotsStiall}>
+      {Array.from({ length: comhaireamh }, (_, innecs) => (
         <View
-          key={index}
+          key={innecs}
           style={[
             styles.StepDotsDot,
-            index === activeIndex && styles.StepDotsDotActive,
+            innecs === innecsGniomhach && styles.StepDotsDotActive,
           ]}
         />
       ))}
@@ -24,7 +24,7 @@ export function StepDots({ count, activeIndex }: StepDotsProps) {
 }
 
 const styles = StyleSheet.create({
-  StepDotsLintel: {
+  StepDotsStiall: {
     flexDirection: 'row',
     justifyContent: 'center',
     gap: 19,

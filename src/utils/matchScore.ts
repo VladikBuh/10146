@@ -23,14 +23,14 @@ export const emptyStats = (): Record<StatKey, number> => ({
   conceded: 0,
 });
 
-export const playerScore = (player: TrackedPlayer) =>
-  statsForRole(player.role).reduce(
-    (total, stat) => total + player.stats[stat] * STAT_WEIGHTS[stat],
+export const playerScore = (imreoir: TrackedPlayer) =>
+  statsForRole(imreoir.role).reduce(
+    (iomlan, stat) => iomlan + imreoir.stats[stat] * STAT_WEIGHTS[stat],
     0,
   );
 
 /**
- * Ranking order from the spec: score desc, then goals, then assists, then the
+ * Ranking order from the spec: scor desc, then goals, then assists, then the
  * fewest turnovers. Keeps the order stable without a weighted rating system.
  */
 export const compareByRanking = (a: TrackedPlayer, b: TrackedPlayer) =>
